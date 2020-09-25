@@ -1,0 +1,30 @@
+import 'package:belediyeler/HomePage/anasayfa.dart';
+import 'package:belediyeler/auth/loginregister.dart';
+import 'package:belediyeler/firebase/belediyeler_objesi.dart';
+import 'package:belediyeler/firebase/firebase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'firebase/kullanici_objesi.dart';
+
+class Chooser extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<KullaniciObjesi>(context);
+
+    if (user == null) {
+      return LoginRegister();
+    } else {
+      return MultiProvider(
+        providers: [StreamProvider<DocumentSnapshot>.value(
+            value: DatabaseService(uid: user.uid).follow)
+          , StreamProvider<List<BelediyelerObjesi>>.value(
+            value: DatabaseService().belediyeleer,
+          )
+        ],
+        child: AnaSayfa(),
+      );
+    }
+  }
+}
