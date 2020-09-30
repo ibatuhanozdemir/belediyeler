@@ -36,4 +36,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-geldik en heyecanlı yeremasda d as
