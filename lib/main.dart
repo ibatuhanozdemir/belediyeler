@@ -36,4 +36,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-devasa değişiklik
+uuu hayvan gibi değişiklik
