@@ -1,10 +1,13 @@
 import 'package:belediyeler/HomePage/follow_page_chooser.dart';
 import 'package:belediyeler/HomePage/tum_haberler.dart';
+import 'package:belediyeler/auth/login.dart';
+import 'package:belediyeler/auth/please_verify.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/firebase/user_info_objesi.dart';
 import 'package:belediyeler/firebase/profil_ana_sayfa.dart';
 import 'package:belediyeler/shared/spinner.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,11 +18,14 @@ class AnaSayfa extends StatefulWidget {
 
 class _AnaSayfaState extends State<AnaSayfa> {
   RealTimeDatabase realTimeDatabase = new RealTimeDatabase();
+  FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = true;
+
+
+
 
   void initState() {
     super.initState();
-
     asyinit().whenComplete(() {
       setState(() {
         loading = false;

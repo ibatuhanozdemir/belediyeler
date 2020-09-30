@@ -1,6 +1,10 @@
-
+import 'package:belediyeler/HomePage/anasayfa.dart';
+import 'package:belediyeler/auth/please_verify.dart';
+import 'package:belediyeler/auth/register.dart';
 import 'package:belediyeler/firebase/authentication.dart';
+import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/shared/spinner.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -9,10 +13,19 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  FirebaseAuth auth = FirebaseAuth.instance;
   String _email = '', _password = '';
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final AuthService _authService = AuthService();
   bool loading = false;
+
+  emailVerificationChecker()async {
+    var user = await auth.currentUser;
+    if (user.emailVerified == false) {
+      return PleaseVerify();
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,12 +79,30 @@ class _LoginState extends State<Login> {
                           } else {
                             print('sig in');
                             setState(() => loading = false);
+                            emailVerificationChecker();
 
-                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> AnaSayfa()));
                           }
                         },
                         child: Text('GİRİŞ'),
-                      )
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Hesabınız yok mu? Şimdi kaydolun.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Color(0xFF15202B)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      RaisedButton(
+                        child: Text("Kayıt ol"),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
+                        },
+                      ),
                     ],
                   ),
                 ),

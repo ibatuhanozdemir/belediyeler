@@ -1,3 +1,4 @@
+import 'package:belediyeler/auth/please_verify.dart';
 import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:flutter/material.dart';
@@ -90,13 +91,13 @@ class _RegisterState extends State<Register> {
                         print('error');
                       } else {
                         print('sig in');
-                        Navigator.of(context).pushReplacement(
+                        Navigator.of(context).push(
                             new MaterialPageRoute(
-                                builder: (BuildContext context) => Chooser()));
+                                builder: (BuildContext context) => PleaseVerify()));
                       }
                     },
-                    child: Text('GİRİŞ'),
-                  )
+                    child: Text('Kaydı Tamamla'),
+                  ),
                 ],
               ),
             ),
