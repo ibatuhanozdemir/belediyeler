@@ -1,6 +1,7 @@
 import 'package:belediyeler/HomePage/anasayfa.dart';
 import 'package:belediyeler/auth/please_verify.dart';
 import 'package:belediyeler/auth/register.dart';
+import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/shared/spinner.dart';
@@ -19,12 +20,6 @@ class _LoginState extends State<Login> {
   final AuthService _authService = AuthService();
   bool loading = false;
 
-  emailVerificationChecker()async {
-    var user = await auth.currentUser;
-    if (user.emailVerified == false) {
-      return PleaseVerify();
-    }
-  }
 
 
   @override
@@ -36,74 +31,75 @@ class _LoginState extends State<Login> {
               centerTitle: true,
               title: Text('Giriş'),
             ),
-            body: Container(
-              margin: const EdgeInsets.all(10),
-              child: Form(
-                key: _formkey,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextFormField(
-                        validator: (input) {
-                          if (input.isEmpty) {
-                            return 'Email bölümü boş bırakılamaz.';
-                          }
-                        },
-                        onChanged: (input) {
-                          setState(() => _email = input);
-                        },
-                        decoration: InputDecoration(labelText: 'Email'),
-                      ),
-                      TextFormField(
-                        validator: (input) {
-                          if (input.length < 6) {
-                            return 'Şifre bölümü boş bırakılamaz.';
-                          }
-                        },
-                        onChanged: (input) {
-                          setState(() => _password = input);
-                        },
-                        decoration: InputDecoration(labelText: 'Şifre'),
-                        obscureText: true,
-                      ),
-                      RaisedButton(
-                        onPressed: () async {
-                          setState(() => loading = true);
-                          dynamic result = await _authService
-                              .loginWithEmailandPassword(_email, _password);
+            body: SafeArea(
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                child: Form(
+                  key: _formkey,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextFormField(
+                          validator: (input) {
+                            if (input.isEmpty) {
+                              return 'Email bölümü boş bırakılamaz.';
+                            }
+                          },
+                          onChanged: (input) {
+                            setState(() => _email = input);
+                          },
+                          decoration: InputDecoration(labelText: 'Email'),
+                        ),
+                        TextFormField(
+                          validator: (input) {
+                            if (input.length < 6) {
+                              return 'Şifre bölümü boş bırakılamaz.';
+                            }
+                          },
+                          onChanged: (input) {
+                            setState(() => _password = input);
+                          },
+                          decoration: InputDecoration(labelText: 'Şifre'),
+                          obscureText: true,
+                        ),
+                        RaisedButton(
+                          onPressed: () async {
+                            setState(() => loading = true);
+                            dynamic result = await _authService
+                                .loginWithEmailandPassword(_email, _password);
 
-                          if (result == null) {
-                            setState(() => loading = false);
-                            print('error');
-                          } else {
-                            print('sig in');
-                            setState(() => loading = false);
-                            emailVerificationChecker();
+                            if (result == null) {
+                              setState(() => loading = false);
+                              print('error');
+                            } else {
+                              print('sig in');
+                              setState(() => loading = false);
 
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> AnaSayfa()));
-                          }
-                        },
-                        child: Text('GİRİŞ'),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Hesabınız yok mu? Şimdi kaydolun.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Color(0xFF15202B)),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      RaisedButton(
-                        child: Text("Kayıt ol"),
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
-                        },
-                      ),
-                    ],
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Chooser()));
+                            }
+                          },
+                          child: Text('GİRİŞ'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Hesabınız yok mu? Şimdi kaydolun.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Color(0xFF15202B)),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RaisedButton(
+                          child: Text("Kayıt ol"),
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

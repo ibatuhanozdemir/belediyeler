@@ -1,3 +1,4 @@
+import 'package:belediyeler/auth/login.dart';
 import 'package:belediyeler/auth/please_verify.dart';
 import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
@@ -76,7 +77,6 @@ class _RegisterState extends State<Register> {
                     decoration: InputDecoration(labelText: 'Soyisim'),
                   ),
                   TextFormField(
-
                     onChanged: (input) {
                       setState(() => _age = input);
                     },
@@ -85,14 +85,13 @@ class _RegisterState extends State<Register> {
                   RaisedButton(
                     onPressed: () async {
                       dynamic result =
-                      await _authService.registerWithEmailandPassword(
-                          _email, _password, _name, _surname, _age);
+                          await _authService.registerWithEmailandPassword(
+                              _email, _password, _name, _surname, _age);
                       if (result == null) {
                         print('error');
                       } else {
                         print('sig in');
-                        Navigator.pop(context);
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
                       }
                     },
                     child: Text('Kaydı Tamamla'),

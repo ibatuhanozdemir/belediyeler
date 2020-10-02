@@ -16,7 +16,7 @@ class Chooser extends StatelessWidget {
     final user = Provider.of<KullaniciObjesi>(context);
     User fbUser = FirebaseAuth.instance.currentUser;
 
-    if (user == null) {
+    if (user == null || fbUser.emailVerified == false) {
       return LoginRegister();
     } else {
       return MultiProvider(
@@ -26,11 +26,8 @@ class Chooser extends StatelessWidget {
             value: DatabaseService().belediyeleer,
           )
         ],
-        child: fbUser.emailVerified ? AnaSayfa() : Login(),
+        child: AnaSayfa(),
       );
     }
   }
 }
-
-
-
