@@ -91,9 +91,8 @@ class _RegisterState extends State<Register> {
                         print('error');
                       } else {
                         print('sig in');
-                        Navigator.of(context).push(
-                            new MaterialPageRoute(
-                                builder: (BuildContext context) => PleaseVerify()));
+                        Navigator.pop(context);
+
                       }
                     },
                     child: Text('Kaydı Tamamla'),
