@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/kullanici_objesi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

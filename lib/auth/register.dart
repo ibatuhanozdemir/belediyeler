@@ -86,13 +86,17 @@ class _RegisterState extends State<Register> {
                           int.tryParse(_age) >= 100) {
                         scKey.currentState.showSnackBar(snackBar);
                       } else {
-                        scKey.currentState.showSnackBar(snackBar);
                         dynamic result =
                             await _authService.registerWithEmailandPassword(
                                 _email, _password, _name, _surname, _age);
                         if (result == null) {
+                          snackBarText = "Bu mail adresi ile kayıtlı bir hesap mevcut.";
+                          setState(() {
+                          });
+                          scKey.currentState.showSnackBar(snackBar);
                           print('error');
                         } else {
+                          scKey.currentState.showSnackBar(snackBar);
                           print('sign in');
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Login()));
@@ -135,11 +139,12 @@ class _RegisterState extends State<Register> {
         _age.startsWith("0") ||
         _age.isEmpty ||
         _age.length < 2 ||
-        _age.length > 2) {
+        _age.length > 2 ||
+        _age.contains(new RegExp(r'[A-Z]'))) {
       setState(() {
         snackBarText = "Lütfen geçerli bir yaş giriniz";
       });
-    }else{
+    } else {
       setState(() {
         snackBarText = "Lütfen size gelen mailden hesabınızı doğrulayın.";
       });
