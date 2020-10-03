@@ -20,11 +20,18 @@ class _LoginState extends State<Login> {
   final AuthService _authService = AuthService();
   bool loading = false;
   final GlobalKey<ScaffoldState> scKey = GlobalKey<ScaffoldState>();
+  String snackBarText = "Mail adresi ve şifre uyumsuz ya da böyle bir kullanıcı yok.";
+  User fbUser = FirebaseAuth.instance.currentUser;
+
 
 
 
   @override
   Widget build(BuildContext context) {
+    final snackBar = SnackBar(
+      content: Text(snackBarText),
+      duration: Duration(seconds: 2),
+    );
     return loading
         ? spinner()
         : Scaffold(
@@ -73,11 +80,16 @@ class _LoginState extends State<Login> {
 
                             if (result == null) {
                               setState(() => loading = false);
+                              scKey.currentState.showSnackBar(snackBar);
                               print('error');
                             } else {
                               print('sig in');
                               setState(() => loading = false);
-
+                              if(fbUser.emailVerified ==false){
+                                snackBarText = "Lütfen mail adresinizi onaylayın";
+                                setState(() {});
+                                scKey.currentState.showSnackBar(snackBar);
+                              }
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Chooser()));
                             }
                           },

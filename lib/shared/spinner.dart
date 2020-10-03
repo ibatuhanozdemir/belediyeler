@@ -5,9 +5,9 @@ class spinner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Color(0xFF15202B),
       child: SpinKitChasingDots(
-        color: Colors.black,
+        color: Colors.white,
         size: 50,
       ),
     );

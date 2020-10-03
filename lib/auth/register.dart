@@ -111,9 +111,7 @@ class _RegisterState extends State<Register> {
   }
 
   snackBarArranger() {
-    setState(() {
-
-    });
+    setState(() {});
     if (_email.length < 3 || !_email.contains("@")) {
       setState(() {
         snackBarText = "Lütfen geçerli bir mail adresi giriniz";
@@ -126,17 +124,25 @@ class _RegisterState extends State<Register> {
       setState(() {
         snackBarText = "Lütfen geçerli bir isim giriniz";
       });
-
     } else if (_surname.length < 3) {
       setState(() {
         snackBarText = "Lütfen geçerli bir soyisim giriniz";
       });
-    } else if (int.tryParse(_age) <= 7 || int.tryParse(_age) >= 110) {
+    } else if (_age.contains(" ") ||
+        _age.contains(",") ||
+        _age.contains(".") ||
+        _age.contains("-") ||
+        _age.startsWith("0") ||
+        _age.isEmpty ||
+        _age.length < 2 ||
+        _age.length > 2) {
       setState(() {
         snackBarText = "Lütfen geçerli bir yaş giriniz";
       });
-    }
-
+    }else{
+      setState(() {
+        snackBarText = "Lütfen size gelen mailden hesabınızı doğrulayın.";
+      });
     }
   }
-
+}
