@@ -19,6 +19,7 @@ class _LoginState extends State<Login> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final AuthService _authService = AuthService();
   bool loading = false;
+  final GlobalKey<ScaffoldState> scKey = GlobalKey<ScaffoldState>();
 
 
 
@@ -27,6 +28,7 @@ class _LoginState extends State<Login> {
     return loading
         ? spinner()
         : Scaffold(
+            key: scKey,
             appBar: AppBar(
               centerTitle: true,
               title: Text('Giriş'),
