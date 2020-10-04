@@ -18,8 +18,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     final snackBar = SnackBar(
+      backgroundColor: Colors.red.shade900,
       content: Text(snackBarText),
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
     );
     return Scaffold(
       key: scKey,

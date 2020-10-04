@@ -1,12 +1,11 @@
-import 'package:belediyeler/HomePage/anasayfa.dart';
-import 'package:belediyeler/auth/please_verify.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:belediyeler/auth/register.dart';
 import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
-import 'package:belediyeler/firebase/realtimefirebase.dart';
-import 'package:belediyeler/shared/spinner.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:emojis/emojis.dart';
+import 'package:emojis/emoji.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -20,104 +19,132 @@ class _LoginState extends State<Login> {
   final AuthService _authService = AuthService();
   bool loading = false;
   final GlobalKey<ScaffoldState> scKey = GlobalKey<ScaffoldState>();
-  String snackBarText = "Mail adresi ve şifre uyumsuz ya da böyle bir kullanıcı yok.";
+  String snackBarText = "Şifre yanlış ya da mail adresiniz doğrulanmamış";
   User fbUser = FirebaseAuth.instance.currentUser;
-
-
-
 
   @override
   Widget build(BuildContext context) {
     final snackBar = SnackBar(
-      content: Text(snackBarText),
-      duration: Duration(seconds: 2),
-    );
-    return loading
-        ? spinner()
-        : Scaffold(
-            key: scKey,
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text('Giriş'),
-            ),
-            body: SafeArea(
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                child: Form(
-                  key: _formkey,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) {
-                              return 'Email bölümü boş bırakılamaz.';
-                            }
-                          },
-                          onChanged: (input) {
-                            setState(() => _email = input);
-                          },
-                          decoration: InputDecoration(labelText: 'Email'),
-                        ),
-                        TextFormField(
-                          validator: (input) {
-                            if (input.length < 6) {
-                              return 'Şifre bölümü boş bırakılamaz.';
-                            }
-                          },
-                          onChanged: (input) {
-                            setState(() => _password = input);
-                          },
-                          decoration: InputDecoration(labelText: 'Şifre'),
-                          obscureText: true,
-                        ),
-                        RaisedButton(
-                          onPressed: () async {
-                            setState(() => loading = true);
-                            dynamic result = await _authService
-                                .loginWithEmailandPassword(_email, _password);
+        content: Text(snackBarText),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.red.shade900);
+    return Scaffold(
+      key: scKey,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Giriş'),
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            margin: const EdgeInsets.all(10),
+            child: Form(
+              key: _formkey,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    TextFormField(
+                      validator: (input) {
+                        if (input.isEmpty) {
+                          return 'Email bölümü boş bırakılamaz.';
+                        }
+                      },
+                      onChanged: (input) {
+                        setState(() => _email = input);
+                      },
+                      decoration: InputDecoration(labelText: 'Email'),
+                    ),
+                    TextFormField(
+                      validator: (input) {
+                        if (input.length < 6) {
+                          return 'Şifre bölümü boş bırakılamaz.';
+                        }
+                      },
+                      onChanged: (input) {
+                        setState(() => _password = input);
+                      },
+                      decoration: InputDecoration(labelText: 'Şifre'),
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: 200,
+                    ),
+                    RaisedButton(
+                      onPressed: () async {
+                        setState(() => loading = true);
+                        dynamic result = await _authService
+                            .loginWithEmailandPassword(_email, _password);
 
-                            if (result == null) {
-                              setState(() => loading = false);
-                              scKey.currentState.showSnackBar(snackBar);
-                              print('error');
-                            } else {
-                              print('sig in');
-                              setState(() => loading = false);
-                              if(fbUser.emailVerified ==false){
-                                snackBarText = "Lütfen mail adresinizi onaylayın";
-                                setState(() {});
-                                scKey.currentState.showSnackBar(snackBar);
-                              }
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Chooser()));
-                            }
-                          },
-                          child: Text('GİRİŞ'),
+                        if (result == null) {
+                          setState(() => loading = false);
+                          scKey.currentState.showSnackBar(snackBar);
+                          print('error');
+                        } else {
+                          print('sig in');
+                          setState(() => loading = false);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Chooser()));
+                        }
+                      },
+                      child: Text('GİRİŞ'),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Hesabınız yok mu? Şimdi kaydolun.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Color(0xFF15202B)),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                      child: Text("Kayıt ol"),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Register()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FadeAnimatedTextKit(
+                          text: ["${Emojis.warning}"],
+                          textStyle: TextStyle(fontSize: 30),
+                          repeatForever: true,
                         ),
-                        SizedBox(
-                          height: 10,
+                        FadeAnimatedTextKit(
+                          text: ["Hesabınızı doğrulamadan giriş yapamazsınız"],
+                          textStyle: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              backgroundColor: Colors.red.shade900,
+                              decorationStyle: TextDecorationStyle.solid),
+                          repeatForever: true,
                         ),
-                        Text(
-                          "Hesabınız yok mu? Şimdi kaydolun.",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Color(0xFF15202B)),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        RaisedButton(
-                          child: Text("Kayıt ol"),
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
-                          },
+                        FadeAnimatedTextKit(
+                          text: ["${Emojis.warning}"],
+                          textStyle: TextStyle(fontSize: 30),
+                          repeatForever: true,
                         ),
                       ],
-                    ),
-                  ),
+                    )
+                  ],
                 ),
               ),
             ),
-          );
+          ),
+        ),
+      ),
+    );
   }
 }

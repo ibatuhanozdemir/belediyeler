@@ -126,3 +126,4 @@ class _AnaSayfaState extends State<AnaSayfa> {
           );
   }
 }
+
