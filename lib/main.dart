@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primaryColor: Color(0xFF15202B),
               ),
-              debugShowCheckedModeBanner: true,
+              debugShowCheckedModeBanner: false,
               home: Scaffold(
                 drawer: Drawer(),
                 body: Chooser(),

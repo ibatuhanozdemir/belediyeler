@@ -1,5 +1,7 @@
 import 'package:belediyeler/auth/login.dart';
 import 'package:belediyeler/firebase/authentication.dart';
+import 'package:emojis/emoji.dart';
+import 'package:emojis/emojis.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -30,7 +32,7 @@ class _RegisterState extends State<Register> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(20),
           child: Form(
             key: _formkey,
             child: Center(
@@ -43,7 +45,7 @@ class _RegisterState extends State<Register> {
                       setState(() => _email = input);
                       snackBarArranger();
                     },
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: InputDecoration(labelText: 'Email',),
                   ),
                   TextFormField(
                     onChanged: (input) {
@@ -79,6 +81,7 @@ class _RegisterState extends State<Register> {
                     },
                     decoration: InputDecoration(labelText: 'Yaş'),
                   ),
+                  SizedBox(height: 15,),
                   RaisedButton(
                     onPressed: () async {
                       if (_name.length < 3 ||
@@ -104,7 +107,18 @@ class _RegisterState extends State<Register> {
                         }
                       }
                     },
-                    child: Text('Kaydı Tamamla'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("${Emojis.checkBoxWithCheck}"),
+                        SizedBox(width: 10,),
+                        Text('Kaydı Tamamla'),
+                      ],
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(24))),
+                    color: Colors.blue,
+                    textColor: Colors.white,
                   ),
                 ],
               ),

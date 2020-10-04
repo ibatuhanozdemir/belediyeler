@@ -3,6 +3,7 @@ import 'package:belediyeler/auth/register.dart';
 import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:emojis/emojis.dart';
 import 'package:emojis/emoji.dart';
@@ -44,33 +45,34 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    TextFormField(
-                      validator: (input) {
-                        if (input.isEmpty) {
-                          return 'Email bölümü boş bırakılamaz.';
-                        }
-                      },
-                      onChanged: (input) {
-                        setState(() => _email = input);
-                      },
-                      decoration: InputDecoration(labelText: 'Email'),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        onChanged: (input) {
+                          setState(() => _email = input);
+                        },
+                        decoration: InputDecoration(labelText: 'Email'),
+                      ),
                     ),
-                    TextFormField(
-                      validator: (input) {
-                        if (input.length < 6) {
-                          return 'Şifre bölümü boş bırakılamaz.';
-                        }
-                      },
-                      onChanged: (input) {
-                        setState(() => _password = input);
-                      },
-                      decoration: InputDecoration(labelText: 'Şifre'),
-                      obscureText: true,
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        onChanged: (input) {
+                          setState(() => _password = input);
+                        },
+                        decoration: InputDecoration(labelText: 'Şifre'),
+                        obscureText: true,
+                      ),
                     ),
                     SizedBox(
                       height: 200,
                     ),
                     RaisedButton(
+
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                      color: Colors.blue,
+                      textColor: Colors.white,
                       onPressed: () async {
                         setState(() => loading = true);
                         dynamic result = await _authService
@@ -89,7 +91,14 @@ class _LoginState extends State<Login> {
                                   builder: (context) => Chooser()));
                         }
                       },
-                      child: Text('GİRİŞ'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("${Emojis.unlocked}"),
+                          SizedBox(width: 10,),
+                          Text('Giriş'),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -103,7 +112,18 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     RaisedButton(
-                      child: Text("Kayıt ol"),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                      color: Colors.red,
+                      textColor: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("${Emojis.writingHand}"),
+                          SizedBox(width: 10,),
+                          Text("Kayıt ol"),
+                        ],
+                      ),
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -119,7 +139,7 @@ class _LoginState extends State<Login> {
                       children: [
                         FadeAnimatedTextKit(
                           text: ["${Emojis.warning}"],
-                          textStyle: TextStyle(fontSize: 30),
+                          textStyle: TextStyle(fontSize: 20),
                           repeatForever: true,
                         ),
                         FadeAnimatedTextKit(
@@ -133,7 +153,7 @@ class _LoginState extends State<Login> {
                         ),
                         FadeAnimatedTextKit(
                           text: ["${Emojis.warning}"],
-                          textStyle: TextStyle(fontSize: 30),
+                          textStyle: TextStyle(fontSize: 20),
                           repeatForever: true,
                         ),
                       ],

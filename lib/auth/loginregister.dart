@@ -1,12 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:belediyeler/auth/login.dart';
 import 'package:belediyeler/auth/register.dart';
+import 'package:emojis/emojis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
-
-
 
 class LoginRegister extends StatefulWidget {
   @override
@@ -15,7 +12,6 @@ class LoginRegister extends StatefulWidget {
 
 class _LoginRegisterState extends State<LoginRegister> {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
@@ -55,16 +51,17 @@ class _LoginRegisterState extends State<LoginRegister> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Icon(Icons.assignment_ind, size: 36,),
-                        Text('Giriş Yap', style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),),
+                        Text("${Emojis.unlocked}"),
+                        Text(
+                          'Giriş Yap',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                         Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
                       ],
                     ),
                     onPressed: () {
-                      Navigator
-                          .of(context)
-                          .push(new MaterialPageRoute(
+                      Navigator.of(context).push(new MaterialPageRoute(
                           builder: (BuildContext context) => Login()));
                     },
                   ),
@@ -83,16 +80,17 @@ class _LoginRegisterState extends State<LoginRegister> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Icon(Icons.assignment_late, size: 36,),
-                        Text('Kayıt Ol', style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),),
+                        Text("${Emojis.writingHand}"),
+                        Text(
+                          'Kayıt Ol',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                         Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
                       ],
                     ),
                     onPressed: () {
-                      Navigator
-                          .of(context)
-                          .push(new MaterialPageRoute(
+                      Navigator.of(context).push(new MaterialPageRoute(
                           builder: (BuildContext context) => Register()));
                     },
                   ),
