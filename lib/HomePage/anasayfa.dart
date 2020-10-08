@@ -1,7 +1,5 @@
 import 'package:belediyeler/HomePage/follow_page_chooser.dart';
 import 'package:belediyeler/HomePage/tum_haberler.dart';
-import 'package:belediyeler/auth/login.dart';
-import 'package:belediyeler/auth/please_verify.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/firebase/user_info_objesi.dart';
@@ -107,15 +105,15 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    title: Text('Ana Akış'),
+                    label: 'Ana Akış',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.subscriptions),
-                    title: Text('Takip Ettiklerim'),
+                    label: 'Takip Ettiklerim',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.account_box),
-                    title: Text('Profil'),
+                    label: 'Profil',
                   ),
                 ],
                 currentIndex: _selectedIndex,
