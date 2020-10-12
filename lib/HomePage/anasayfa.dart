@@ -105,15 +105,15 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    label: 'Ana Akış',
+                    title: Text('Ana Akış') ,
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.subscriptions),
-                    label: 'Takip Ettiklerim',
+                    title: Text('Takip Ettiklerim'),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.account_box),
-                    label: 'Profil',
+                    title: Text('Profil'),
                   ),
                 ],
                 currentIndex: _selectedIndex,

@@ -32,7 +32,7 @@ class _LoginRegisterState extends State<LoginRegister> {
                       text: ["Halkın Belediyeleri"],
                       speed: Duration(milliseconds: 200),
                       textStyle: TextStyle(
-                        fontSize: 35,
+                        fontSize: 35, color: Colors.black
                       ),
                     ),
                   ),
