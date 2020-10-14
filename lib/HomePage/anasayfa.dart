@@ -75,7 +75,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
             value: DatabaseService().Users,
             catchError: (_, __) => null,
             child: Scaffold(
-              drawer: Drawer(),
               body: Stack(
                 children: <Widget>[
                   Offstage(

@@ -1,4 +1,5 @@
 import 'package:belediyeler/HomePage/NewsDetail.dart';
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/haberler_objesi.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
@@ -9,7 +10,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:belediyeler/KalipWidgetlar/default_appbar.dart';
+
+
 class TumHaberler extends StatefulWidget {
   @override
   _TumHaberlerState createState() => _TumHaberlerState();
@@ -60,10 +62,14 @@ class _TumHaberlerState extends State<TumHaberler> {
     return loading
         ? spinner()
         : Scaffold(
+            endDrawer: KalipDrawer(),
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Color(0xFF15202B),
-              title: Text("Ana Akış",style: TextStyle(color: Colors.white),),
+              title: Text(
+                "Ana Akış",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             body: ListView.builder(
               controller: _scrollController,

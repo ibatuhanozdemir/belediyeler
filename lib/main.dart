@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               home: Scaffold(
-                drawer: Drawer(),
                 body: Chooser(),
               ),
             ),
