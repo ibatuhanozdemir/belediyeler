@@ -1,3 +1,4 @@
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:belediyeler/auth/login.dart';
 import 'package:belediyeler/auth/register.dart';
@@ -5,15 +6,18 @@ import 'package:emojis/emojis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class LoginRegister extends StatefulWidget {
   @override
   _LoginRegisterState createState() => _LoginRegisterState();
 }
 
 class _LoginRegisterState extends State<LoginRegister> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         centerTitle: true,
         title: TypewriterAnimatedTextKit(
@@ -28,6 +32,7 @@ class _LoginRegisterState extends State<LoginRegister> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
+            color: Colors.white,
             padding: EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -35,13 +40,10 @@ class _LoginRegisterState extends State<LoginRegister> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 200,
-                  child: Center(
-                  ),
+                  height: 10,
                 ),
-                SizedBox(
-                  height: 200,
-                ),
+                Image(image:  AssetImage("images/giris.gif")),
+                SizedBox(height: 100,),
                 SizedBox(
                   height: 48,
                   child: RaisedButton(
