@@ -24,103 +24,108 @@ class _RegisterState extends State<Register> {
       content: Text(snackBarText),
       duration: Duration(seconds: 2),
     );
-    return Scaffold(
-      key: scKey,
-      appBar: AppBar(
-        title: Text('Kayıt'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: const EdgeInsets.all(20),
-          child: Form(
-            key: _formkey,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextFormField(
-                    onChanged: (input) {
-                      input.trim();
-                      setState(() => _email = input);
-                      snackBarArranger();
-                    },
-                    decoration: InputDecoration(labelText: 'Email',),
-                  ),
-                  TextFormField(
-                    onChanged: (input) {
-                      input.trim();
-                      setState(() => _password = input);
-                      snackBarArranger();
-                    },
-                    decoration: InputDecoration(labelText: 'Şifre'),
-                    obscureText: true,
-                  ),
-                  TextFormField(
-                    onChanged: (input) {
-                      input.trim();
-                      setState(() => _name = input);
-                      snackBarArranger();
-                    },
-                    decoration: InputDecoration(labelText: 'İsim'),
-                  ),
-                  TextFormField(
-                    onChanged: (input) {
-                      input.trim();
-                      setState(() => _surname = input);
-                      snackBarArranger();
-                    },
-                    decoration: InputDecoration(labelText: 'Soyisim'),
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    onChanged: (input) {
-                      input.trim();
-                      setState(() => _age = input);
-                      snackBarArranger();
-                    },
-                    decoration: InputDecoration(labelText: 'Yaş'),
-                  ),
-                  SizedBox(height: 15,),
-                  RaisedButton(
-                    onPressed: () async {
-                      if (_name.length < 3 ||
-                          _surname.length < 3 ||
-                          int.tryParse(_age) <= 7 ||
-                          int.tryParse(_age) >= 100) {
-                        scKey.currentState.showSnackBar(snackBar);
-                      } else {
-                        dynamic result =
-                            await _authService.registerWithEmailandPassword(
-                                _email, _password, _name, _surname, _age);
-                        if (result == null) {
-                          snackBarText = "Bu mail adresi ile kayıtlı bir hesap mevcut.";
-                          setState(() {
-                          });
-                          scKey.currentState.showSnackBar(snackBar);
-                          print('error');
-                        } else {
-                          scKey.currentState.showSnackBar(snackBar);
-                          print('sign in');
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Login()));
-                        }
-                      }
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("${Emojis.checkBoxWithCheck}"),
-                        SizedBox(width: 10,),
-                        Text('Kaydı Tamamla'),
-                      ],
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        key: scKey,
+        appBar: AppBar(
+          title: Text('Kayıt'),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.all(20),
+            child: Form(
+              key: _formkey,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TextFormField(
+                      onChanged: (input) {
+                        input.trim();
+                        setState(() => _email = input);
+                        snackBarArranger();
+                      },
+                      decoration: InputDecoration(labelText: 'Email',),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(24))),
-                    color: Colors.blue,
-                    textColor: Colors.white,
-                  ),
-                ],
+                    TextFormField(
+                      onChanged: (input) {
+                        input.trim();
+                        setState(() => _password = input);
+                        snackBarArranger();
+                      },
+                      decoration: InputDecoration(labelText: 'Şifre'),
+                      obscureText: true,
+                    ),
+                    TextFormField(
+                      onChanged: (input) {
+                        input.trim();
+                        setState(() => _name = input);
+                        snackBarArranger();
+                      },
+                      decoration: InputDecoration(labelText: 'İsim'),
+                    ),
+                    TextFormField(
+                      onChanged: (input) {
+                        input.trim();
+                        setState(() => _surname = input);
+                        snackBarArranger();
+                      },
+                      decoration: InputDecoration(labelText: 'Soyisim'),
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (input) {
+                        input.trim();
+                        setState(() => _age = input);
+                        snackBarArranger();
+                      },
+                      decoration: InputDecoration(labelText: 'Yaş'),
+                    ),
+                    SizedBox(height: 15,),
+                    RaisedButton(
+                      onPressed: () async {
+                        if (_name.length < 3 ||
+                            _surname.length < 3 ||
+                            int.tryParse(_age) <= 7 ||
+                            int.tryParse(_age) >= 100) {
+                          scKey.currentState.showSnackBar(snackBar);
+                        } else {
+                          dynamic result =
+                              await _authService.registerWithEmailandPassword(
+                                  _email, _password, _name, _surname, _age);
+                          if (result == null) {
+                            snackBarText = "Bu mail adresi ile kayıtlı bir hesap mevcut.";
+                            setState(() {
+                            });
+                            scKey.currentState.showSnackBar(snackBar);
+                            print('error');
+                          } else {
+                            scKey.currentState.showSnackBar(snackBar);
+                            print('sign in');
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Login()));
+                          }
+                        }
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("${Emojis.checkBoxWithCheck}"),
+                          SizedBox(width: 10,),
+                          Text('Kaydı Tamamla'),
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

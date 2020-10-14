@@ -29,136 +29,141 @@ class _LoginState extends State<Login> {
         content: Text(snackBarText),
         duration: Duration(seconds: 2),
         backgroundColor: Colors.red.shade900);
-    return Scaffold(
-      key: scKey,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Giriş'),
-      ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            margin: const EdgeInsets.all(10),
-            child: Form(
-              key: _formkey,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextFormField(
-                        onChanged: (input) {
-                          setState(() => _email = input);
-                        },
-                        decoration: InputDecoration(labelText: 'Email'),
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        key: scKey,
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Giriş'),
+        ),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              child: Form(
+                key: _formkey,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: TextFormField(
+                          onChanged: (input) {
+                            setState(() => _email = input);
+                          },
+                          decoration: InputDecoration(labelText: 'Email'),
+                        ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextFormField(
-                        onChanged: (input) {
-                          setState(() => _password = input);
-                        },
-                        decoration: InputDecoration(labelText: 'Şifre'),
-                        obscureText: true,
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: TextFormField(
+                          onChanged: (input) {
+                            setState(() => _password = input);
+                          },
+                          decoration: InputDecoration(labelText: 'Şifre'),
+                          obscureText: true,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 200,
-                    ),
-                    RaisedButton(
+                      SizedBox(
+                        height: 200,
+                      ),
+                      RaisedButton(
 
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
-                      color: Colors.blue,
-                      textColor: Colors.white,
-                      onPressed: () async {
-                        setState(() => loading = true);
-                        dynamic result = await _authService
-                            .loginWithEmailandPassword(_email, _password);
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(24))),
+                        color: Colors.blue,
+                        textColor: Colors.white,
+                        onPressed: () async {
+                          setState(() => loading = true);
+                          dynamic result = await _authService
+                              .loginWithEmailandPassword(_email, _password);
 
-                        if (result == null) {
-                          setState(() => loading = false);
-                          scKey.currentState.showSnackBar(snackBar);
-                          print('error');
-                        } else {
-                          print('sig in');
-                          setState(() => loading = false);
-                          Navigator.pushReplacement(
+                          if (result == null) {
+                            setState(() => loading = false);
+                            scKey.currentState.showSnackBar(snackBar);
+                            print('error');
+                          } else {
+                            print('sig in');
+                            setState(() => loading = false);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Chooser()));
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("${Emojis.unlocked}"),
+                            SizedBox(width: 10,),
+                            Text('Giriş'),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Hesabınız yok mu? Şimdi kaydolun.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Color(0xFF15202B)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(24))),
+                        color: Colors.red,
+                        textColor: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("${Emojis.writingHand}"),
+                            SizedBox(width: 10,),
+                            Text("Kayıt ol"),
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Chooser()));
-                        }
-                      },
-                      child: Row(
+                                  builder: (context) => Register()));
+                        },
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("${Emojis.unlocked}"),
-                          SizedBox(width: 10,),
-                          Text('Giriş'),
+                          FadeAnimatedTextKit(
+                            text: ["${Emojis.warning}"],
+                            textStyle: TextStyle(fontSize: 20),
+                            repeatForever: true,
+                          ),
+                          FadeAnimatedTextKit(
+                            text: ["Hesabınızı doğrulamadan giriş yapamazsınız"],
+                            textStyle: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                backgroundColor: Colors.red.shade900,
+                                decorationStyle: TextDecorationStyle.solid),
+                            repeatForever: true,
+                          ),
+                          FadeAnimatedTextKit(
+                            text: ["${Emojis.warning}"],
+                            textStyle: TextStyle(fontSize: 20),
+                            repeatForever: true,
+                          ),
                         ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Hesabınız yok mu? Şimdi kaydolun.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Color(0xFF15202B)),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
-                      color: Colors.red,
-                      textColor: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("${Emojis.writingHand}"),
-                          SizedBox(width: 10,),
-                          Text("Kayıt ol"),
-                        ],
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Register()));
-                      },
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FadeAnimatedTextKit(
-                          text: ["${Emojis.warning}"],
-                          textStyle: TextStyle(fontSize: 20),
-                          repeatForever: true,
-                        ),
-                        FadeAnimatedTextKit(
-                          text: ["Hesabınızı doğrulamadan giriş yapamazsınız"],
-                          textStyle: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              backgroundColor: Colors.red.shade900,
-                              decorationStyle: TextDecorationStyle.solid),
-                          repeatForever: true,
-                        ),
-                        FadeAnimatedTextKit(
-                          text: ["${Emojis.warning}"],
-                          textStyle: TextStyle(fontSize: 20),
-                          repeatForever: true,
-                        ),
-                      ],
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
