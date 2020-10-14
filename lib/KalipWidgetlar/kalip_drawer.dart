@@ -16,7 +16,7 @@ class KalipDrawer extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.45,
           ),
           Column(
             children: [
@@ -44,15 +44,15 @@ class KalipDrawer extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(
-                    "https://www.ibb.istanbul/Uploads/2017/4/corporatelogo.jpg"))),
+                image: AssetImage(
+                    "images/haydarpasa.jpg"))),
         child: Stack(children: <Widget>[
           Positioned(
               bottom: 12.0,
-              left: 16.0,
+              left: 20.0,
               child: Text("Seçenekler",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.orange.shade900,
                       fontSize: 20.0,
                       fontWeight: FontWeight.w500))),
         ]));

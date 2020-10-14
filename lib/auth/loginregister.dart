@@ -22,7 +22,7 @@ class _LoginRegisterState extends State<LoginRegister> {
         centerTitle: true,
         title: TypewriterAnimatedTextKit(
           isRepeatingAnimation: false,
-          text: ["Halkın Belediyeleri"],
+          text: ["Belediye Haberleri"],
           speed: Duration(milliseconds: 200),
           textStyle: TextStyle(
           ),
@@ -32,6 +32,7 @@ class _LoginRegisterState extends State<LoginRegister> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
+            height: MediaQuery.of(context).size.height,
             color: Colors.white,
             padding: EdgeInsets.all(16),
             child: Column(
@@ -39,11 +40,9 @@ class _LoginRegisterState extends State<LoginRegister> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
+
                 Image(image:  AssetImage("images/giris.gif")),
-                SizedBox(height: 100,),
+                SizedBox(height: 40,),
                 SizedBox(
                   height: 48,
                   child: RaisedButton(
