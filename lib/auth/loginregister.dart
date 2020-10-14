@@ -14,6 +14,16 @@ class _LoginRegisterState extends State<LoginRegister> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: TypewriterAnimatedTextKit(
+          isRepeatingAnimation: false,
+          text: ["Halkın Belediyeleri"],
+          speed: Duration(milliseconds: 200),
+          textStyle: TextStyle(
+          ),
+        ),
+      ),
       backgroundColor: Colors.grey.shade200,
       body: SingleChildScrollView(
         child: Center(
@@ -27,14 +37,6 @@ class _LoginRegisterState extends State<LoginRegister> {
                 SizedBox(
                   height: 200,
                   child: Center(
-                    child: TypewriterAnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      text: ["Halkın Belediyeleri"],
-                      speed: Duration(milliseconds: 200),
-                      textStyle: TextStyle(
-                        fontSize: 35,
-                      ),
-                    ),
                   ),
                 ),
                 SizedBox(

@@ -27,12 +27,15 @@ class NewsDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(belediye),
-              Text(tarih),
-            ],
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(belediye),
+                Text(tarih),
+              ],
+            ),
           ),
           SizedBox(
             height: 10,
