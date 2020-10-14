@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
         duration: Duration(seconds: 2),
         backgroundColor: Colors.red.shade900);
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
       child: Scaffold(
@@ -72,9 +72,9 @@ class _LoginState extends State<Login> {
                         height: 200,
                       ),
                       RaisedButton(
-
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(24))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(24))),
                         color: Colors.blue,
                         textColor: Colors.white,
                         onPressed: () async {
@@ -99,7 +99,9 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("${Emojis.unlocked}"),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text('Giriş'),
                           ],
                         ),
@@ -117,14 +119,17 @@ class _LoginState extends State<Login> {
                       ),
                       RaisedButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(24))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(24))),
                         color: Colors.red,
                         textColor: Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("${Emojis.writingHand}"),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text("Kayıt ol"),
                           ],
                         ),
@@ -147,7 +152,9 @@ class _LoginState extends State<Login> {
                             repeatForever: true,
                           ),
                           FadeAnimatedTextKit(
-                            text: ["Hesabınızı doğrulamadan giriş yapamazsınız"],
+                            text: [
+                              "Hesabınızı doğrulamadan giriş yapamazsınız"
+                            ],
                             textStyle: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,

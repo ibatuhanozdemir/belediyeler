@@ -5,6 +5,7 @@ import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/firebase/user_info_objesi.dart';
 import 'package:belediyeler/firebase/profil_ana_sayfa.dart';
 import 'package:belediyeler/shared/spinner.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -102,25 +103,28 @@ class _AnaSayfaState extends State<AnaSayfa> {
                   ),
                 ],
               ),
-              bottomNavigationBar: BottomNavigationBar(
-
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Ana Akış',
+              bottomNavigationBar: ConvexAppBar(
+                items: [
+                  TabItem(
+                    icon: Icon(Icons.home,color: Colors.white,),
+                    title: 'Ana Akış',
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.subscriptions),
-                    label: 'Takip Ettiklerim',
+                  TabItem(
+                    icon: Icon(Icons.subscriptions,color: Colors.white,),
+                    title: 'Takip Ettiklerim',
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.account_box),
-                    label: 'Profil',
+                  TabItem(
+                    icon: Icon(Icons.info,color: Colors.white,),
+                    title: 'Belediye Bilgileri',
                   ),
                 ],
-                currentIndex: _selectedIndex,
-                selectedItemColor: Colors.amber,
+                initialActiveIndex: _selectedIndex,
                 onTap: _onItemTapped,
+                backgroundColor: Color(0xFF15202B),
+                activeColor: Colors.black,
+                top: -5,
+                curveSize: 10,
+
               ),
             ),
           );
