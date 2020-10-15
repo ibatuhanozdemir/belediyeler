@@ -14,10 +14,12 @@ import 'package:provider/provider.dart';
 
 class TumHaberler extends StatefulWidget {
   @override
+
   _TumHaberlerState createState() => _TumHaberlerState();
 }
 
 class _TumHaberlerState extends State<TumHaberler> {
+
   List<HaberlerObjesi> postList = [];
   List tarih = [];
   String post2;

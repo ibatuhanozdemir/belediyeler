@@ -1,3 +1,5 @@
+
+
 import 'package:belediyeler/ekranlar/HomePage/belediyelist.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/firebase.dart';
@@ -10,15 +12,27 @@ import 'package:provider/provider.dart';
 
 import '../chooser.dart';
 import 'authentication.dart';
+import 'belediyeler_objesi.dart';
 
 class BelediyeBilgileri extends StatefulWidget {
+
   @override
   _BelediyeBilgileriState createState() => _BelediyeBilgileriState();
 }
 
 class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
-  @override
+
+  List<BelediyelerObjesi> belediyeList;
+  String SelectedName;
+  String URL="images/giris.gif";
+
+
   Widget build(BuildContext context) {
+
+
+
+    belediyeList = Provider.of<List<BelediyelerObjesi>>(context);
+
     return Scaffold(
       endDrawer: KalipDrawer(),
       appBar: AppBar(
@@ -41,16 +55,31 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
               textAlign: TextAlign.center,
             )),
             DropdownButton(
+              value: SelectedName,
+              hint: Text('Belediye Seçiniz'),
+              items: belediyeList.map((list){
+                return DropdownMenuItem(child:
+                Text(list.belediyeisim),
+                value: list.belediyeisim);
+              }).toList(),
+              onChanged: (value){
 
-              items: [
-                DropdownMenuItem(child: Text("sad")),
-                DropdownMenuItem(child: Text("ds")),
-                DropdownMenuItem(child: Text("sad")),
-                DropdownMenuItem(child: Text("vfvf")),
-                DropdownMenuItem(child: Text("dd")),
-              ],
-              onChanged: (value) {},
+                setState(() {
+                  SelectedName=value;
+                  belediyeList.forEach((element) {
+                    if(element.belediyeisim==value){
+                      URL=element.belediyeurl;
+                    }
+                  });
+                });
+
+              },
             ),
+            Container(
+                height: MediaQuery.of(context).size.height * 0.16,
+                width: MediaQuery.of(context).size.height * 0.16,
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: Image.network(URL)),
           ],
         ),
       ),
