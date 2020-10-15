@@ -1,7 +1,7 @@
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:belediyeler/auth/login.dart';
-import 'package:belediyeler/auth/register.dart';
+import 'file:///C:/Users/ibatu/AndroidStudioProjects/belediyeler/lib/ekranlar//GirisEkranlari/login.dart';
+import 'package:belediyeler/ekranlar//GirisEkranlari/register.dart';
 import 'package:emojis/emojis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,20 +1,18 @@
-import 'package:belediyeler/HomePage/belediyelist.dart';
-import 'package:belediyeler/firebase/firebase.dart';
-import 'package:belediyeler/firebase/user_info_objesi.dart';
+import 'package:belediyeler/firebase/authentication.dart';
 import 'package:belediyeler/firebase/kullanici_objesi.dart';
+import 'package:belediyeler/firebase/user_info_objesi.dart';
 import 'package:belediyeler/shared/spinner.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../chooser.dart';
-import 'authentication.dart';
+import 'belediyelist.dart';
 
-class ProfilAnaSayfa extends StatefulWidget {
+class ProfilSayfasi extends StatefulWidget {
   @override
-  _ProfilAnaSayfaState createState() => _ProfilAnaSayfaState();
+  _ProfilSayfasiState createState() => _ProfilSayfasiState();
 }
 
-class _ProfilAnaSayfaState extends State<ProfilAnaSayfa> {
+class _ProfilSayfasiState extends State<ProfilSayfasi> {
   final _formkey = GlobalKey<FormState>();
   String aaa;
   String bbb;

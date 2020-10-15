@@ -1,4 +1,4 @@
-import 'package:belediyeler/HomePage/NewsDetail.dart';
+import 'package:belediyeler/ekranlar/HomePage/NewsDetail.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/haberler_objesi.dart';

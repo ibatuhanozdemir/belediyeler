@@ -1,10 +1,10 @@
-import 'package:belediyeler/HomePage/follow_page_chooser.dart';
-import 'package:belediyeler/HomePage/tum_haberler.dart';
+import 'package:belediyeler/ekranlar/HomePage/follow_page_chooser.dart';
+import 'package:belediyeler/ekranlar/HomePage/tum_haberler.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/firebase/user_info_objesi.dart';
-import 'package:belediyeler/firebase/profil_ana_sayfa.dart';
+import 'package:belediyeler/firebase/belediye_bilgileri.dart';
 import 'package:belediyeler/shared/spinner.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -95,7 +95,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     offstage: _selectedIndex != 2,
                     child: TickerMode(
                       enabled: _selectedIndex == 2,
-                      child: MaterialApp(home: ProfilAnaSayfa()),
+                      child: MaterialApp(home: BelediyeBilgileri()),
                     ),
                   ),
                 ],

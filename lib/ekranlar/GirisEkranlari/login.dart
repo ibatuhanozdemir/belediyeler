@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:belediyeler/auth/register.dart';
+import 'package:belediyeler/ekranlar//GirisEkranlari/register.dart';
 import 'package:belediyeler/chooser.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';

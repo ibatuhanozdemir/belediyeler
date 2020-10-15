@@ -1,4 +1,4 @@
-import 'package:belediyeler/HomePage/news1.dart';
+import 'package:belediyeler/ekranlar/HomePage/news1.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

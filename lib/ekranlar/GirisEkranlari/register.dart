@@ -1,4 +1,4 @@
-import 'package:belediyeler/auth/login.dart';
+import 'file:///C:/Users/ibatu/AndroidStudioProjects/belediyeler/lib/ekranlar//GirisEkranlari/login.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:emojis/emoji.dart';
 import 'package:emojis/emojis.dart';

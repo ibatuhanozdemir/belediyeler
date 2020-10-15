@@ -1,3 +1,4 @@
+import 'package:belediyeler/ekranlar/HomePage/profil_sayfasi.dart';
 import 'package:emojis/emojis.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,7 +13,9 @@ class KalipDrawer extends StatelessWidget {
             children: [
               _createHeader(),
               _createDrawerItem(
-                  icon: Icons.account_circle, onTap: () {}, text: "Profil"),
+                  icon: Icons.account_circle, onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilSayfasi()));
+              }, text: "Profil"),
             ],
           ),
           SizedBox(
