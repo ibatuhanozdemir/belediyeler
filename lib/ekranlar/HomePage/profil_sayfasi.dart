@@ -1,62 +1,19 @@
+import 'package:belediyeler/firebase/authentication.dart';
+import 'package:belediyeler/firebase/kullanici_objesi.dart';
+import 'package:belediyeler/firebase/user_info_objesi.dart';
+import 'package:belediyeler/shared/spinner.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'belediyelist.dart';
 
+class ProfilSayfasi extends StatefulWidget {
+  @override
+  _ProfilSayfasiState createState() => _ProfilSayfasiState();
+}
 
-/*
-body: Center(
-              child: Container(
-                child: Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextFormField(
-                        decoration: InputDecoration(
-                            hintText: Name,
-                            hintStyle: TextStyle(color: Colors.black)),
-                        validator: (val) => val.isEmpty ? 'İsim giriniz' : null,
-                        onChanged: (input) => setState(() => aaa = input),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(labelText: Surname),
-                        validator: (val) => val.isEmpty ? 'İsim giriniz' : null,
-                        onChanged: (input) => setState(() => bbb = input),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(labelText: Age),
-                        validator: (val) => val.isEmpty ? 'İsim giriniz' : null,
-                        onChanged: (input) => setState(() => ccc = input),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      RaisedButton(
-                        onPressed: () async {
-                          dynamic result = await _authService.signOut();
-                        },
-                        child: Text('Çıkış'),
-                      ),
-                      RaisedButton(
-                        elevation: 100,
-                        child: Text('Belediye Listesi'),
-                        onPressed: () {
-                          Navigator.of(context).push(new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  belediyeList()));
-                        },
-                      ),
-                    ],
-                  ),
-
- */
-
-/*
-final _formkey = GlobalKey<FormState>();
+class _ProfilSayfasiState extends State<ProfilSayfasi> {
+  final _formkey = GlobalKey<FormState>();
   String aaa;
   String bbb;
   String ccc;
@@ -156,4 +113,4 @@ final _formkey = GlobalKey<FormState>();
             ),
           );
   }
- */
+}

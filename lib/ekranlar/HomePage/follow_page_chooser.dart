@@ -1,5 +1,6 @@
-import 'package:belediyeler/HomePage/belediyelist.dart';
-import 'package:belediyeler/HomePage/follow.dart';
+import 'package:belediyeler/ekranlar/HomePage/belediyelist.dart';
+import 'package:belediyeler/ekranlar/HomePage/follow.dart';
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

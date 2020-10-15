@@ -1,3 +1,4 @@
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/haberler_objesi.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/shared/spinner.dart';
@@ -74,6 +75,7 @@ class _followPageState extends State<followPage> {
     return loading
         ? spinner()
         : Scaffold(
+            endDrawer: KalipDrawer(),
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Color(0xFF15202B),

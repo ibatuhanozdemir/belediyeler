@@ -1,4 +1,5 @@
-import 'package:belediyeler/HomePage/news1.dart';
+import 'package:belediyeler/ekranlar/HomePage/news1.dart';
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,19 +18,24 @@ class NewsDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: KalipDrawer(),
       appBar: AppBar(
+        backgroundColor: Color(0xFF15202B),
         title: Text(haberbaslik),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(belediye),
-              Text(tarih),
-            ],
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(belediye),
+                Text(tarih),
+              ],
+            ),
           ),
           SizedBox(
             height: 10,

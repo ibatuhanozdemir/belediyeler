@@ -40,6 +40,8 @@ dependencies:
   cloud_firestore: ^0.14.0+2
   email_validator: ^1.0.5
   emojis: ^0.9.3
+  convex_bottom_bar: ^2.5.1+1
+
 
 
 dev_dependencies:
