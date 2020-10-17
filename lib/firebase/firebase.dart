@@ -12,6 +12,8 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('Users');
   final CollectionReference userCollection1 =
       FirebaseFirestore.instance.collection('belediyeler');
+  final CollectionReference userCollection2 =
+  FirebaseFirestore.instance.collection('belediyelerinfo');
 
   Future updateUserData(String name, String surname, String age) async {
     try {
@@ -93,6 +95,16 @@ class DatabaseService {
         //'follow': FieldValue.arrayUnion([belediye])
         'follow': FieldValue.arrayRemove([belediye])
       });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+  Future BelediyeBilgileri(String belediyeisim) async {
+    try {
+      var result=await userCollection2.doc(belediyeisim).get();
+      List BelediyeBilgileriList=[{'Belediye Tel': result.get('Belediye Tel'),'Belediye Faks':result.get('Belediye Faks'),'Belediye Mail':result.get('Belediye Mail'),'Belediye Web':result.get('Belediye Web'),'Nufus':result.get('Nufus')}];
+
+      return BelediyeBilgileriList;
     } catch (e) {
       print(e.toString());
     }
