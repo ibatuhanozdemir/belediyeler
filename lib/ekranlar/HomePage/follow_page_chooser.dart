@@ -17,6 +17,7 @@ class _FollowPageChooserState extends State<FollowPageChooser> {
     List aaa = follows.get("follow");
     if (aaa.length == 0) {
       return Scaffold(
+        backgroundColor: Colors.white,
         body: Center(
           child: RaisedButton(
             elevation: 100,

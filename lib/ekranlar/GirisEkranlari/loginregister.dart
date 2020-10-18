@@ -29,77 +29,75 @@ class _LoginRegisterState extends State<LoginRegister> {
         ),
       ),
       backgroundColor: Colors.grey.shade200,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white,
+          padding: EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
 
-                Image(image:  AssetImage("images/giris.gif")),
-                SizedBox(height: 40,),
-                SizedBox(
-                  height: 48,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(24))),
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Text("${Emojis.unlocked}"),
-                        Text(
-                          'Giriş Yap',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) => Login()));
-                    },
+              Image(image:  AssetImage("images/giris.gif")),
+              SizedBox(height: 40,),
+              SizedBox(
+                height: 48,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(24))),
+                  color: Colors.red,
+                  textColor: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text("${Emojis.unlocked}"),
+                      Text(
+                        'Giriş Yap',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
+                    ],
                   ),
+                  onPressed: () {
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => Login()));
+                  },
                 ),
-                SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  height: 48,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(24))),
-                    color: Colors.blue,
-                    textColor: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Text("${Emojis.writingHand}"),
-                        Text(
-                          'Kayıt Ol',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) => Register()));
-                    },
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                height: 48,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(24))),
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text("${Emojis.writingHand}"),
+                      Text(
+                        'Kayıt Ol',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Opacity(opacity: 0, child: Icon(Icons.assignment_ind)),
+                    ],
                   ),
+                  onPressed: () {
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => Register()));
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

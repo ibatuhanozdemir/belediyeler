@@ -12,6 +12,7 @@ class BelediyeBilgileri extends StatefulWidget {
 }
 
 class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
+  bool belediyeSecilmedi = true;
   List<BelediyelerObjesi> belediyeList;
   String SelectedName;
   String URL = "images/giris.gif";
@@ -48,18 +49,22 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
             ),
             Center(
                 child: Text(
-                  "Bilgi almak istediğiniz belediye:",
-                  textAlign: TextAlign.center,
-                )),
+              "Bilgi almak istediğiniz belediye:",
+              textAlign: TextAlign.center,
+            )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
                   child: DropdownButton(
+                    iconEnabledColor: Colors.red,
                     itemHeight: MediaQuery.of(context).size.height * 0.10,
                     value: SelectedName,
-                    hint: Text('Belediye Seçiniz'),
+                    hint: Text(
+                      'Belediye Seçiniz',
+                      style: TextStyle(color: Colors.red),
+                    ),
                     items: belediyeList.map((list) {
                       return DropdownMenuItem(
                           child: Card(
@@ -81,11 +86,11 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
                     }).toList(),
                     onChanged: (value) async {
                       var result =
-                      await DatabaseService().BelediyeBilgileri(value);
+                          await DatabaseService().BelediyeBilgileri(value);
                       print(result);
                       setState(() {
+                        belediyeSecilmedi = false;
                         BelediyeBilgileriList = result;
-
                         SelectedName = value;
                         belediyeList.forEach((element) {
                           if (element.belediyeisim == value) {
@@ -98,28 +103,30 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
                 ),
               ],
             ),
-            Card(
-              elevation: 0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      width: MediaQuery.of(context).size.height * 0.3,
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: Image.network(URL)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
+            belediyeSecilmedi
+                ? Container()
+                : Card(
+                    elevation: 0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            width: MediaQuery.of(context).size.height * 0.3,
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            child: Image.network(URL)),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        BelediyeAyrintilariWidgeti(
+                            BelediyeBilgileriList[0]['Belediye Tel'],
+                            BelediyeBilgileriList[0]['Belediye Faks'],
+                            BelediyeBilgileriList[0]['Belediye Mail'],
+                            BelediyeBilgileriList[0]['Belediye Web'],
+                            BelediyeBilgileriList[0]['Nufus']),
+                      ],
+                    ),
                   ),
-                  BelediyeAyrintilariWidgeti(
-                      BelediyeBilgileriList[0]['Belediye Tel'],
-                      BelediyeBilgileriList[0]['Belediye Faks'],
-                      BelediyeBilgileriList[0]['Belediye Mail'],
-                      BelediyeBilgileriList[0]['Belediye Web'],
-                      BelediyeBilgileriList[0]['Nufus']),
-                ],
-              ),
-            ),
           ],
         ),
       ),

@@ -18,6 +18,7 @@ class NewsDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       endDrawer: KalipDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xFF15202B),
@@ -26,7 +27,6 @@ class NewsDetail extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-
           Container(
             padding: EdgeInsets.all(10),
             child: Row(

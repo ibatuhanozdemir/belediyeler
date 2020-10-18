@@ -102,8 +102,8 @@ class _followPageState extends State<followPage> {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.28,
           child: Card(
-            color: Colors.blueGrey.shade100,
-            elevation: 100,
+            color: Colors.white,
+            elevation: 10,
             child: Column(
               children: <Widget>[
                 SizedBox(
