@@ -70,6 +70,7 @@ class DatabaseService {
       return BelediyelerObjesi(
         belediyeisim: doc.get('isim'),
         belediyeurl: doc.get('URL'),
+        belediyeisimkisa: doc.get('isimkısa'),
       );
     }).toList();
   }

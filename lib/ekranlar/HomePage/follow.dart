@@ -1,4 +1,5 @@
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
+import 'package:belediyeler/firebase/belediyeler_objesi.dart';
 import 'package:belediyeler/firebase/haberler_objesi.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
 import 'package:belediyeler/shared/spinner.dart';
@@ -27,6 +28,7 @@ class _followPageState extends State<followPage> {
   List<HaberlerObjesi> postList = [];
   List tarih = [];
   List follow = [];
+
   String post2;
   var aaa;
   var bbb;
@@ -43,6 +45,7 @@ class _followPageState extends State<followPage> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     var follows = Provider.of<DocumentSnapshot>(context);
+
     postList = [];
     tarih = [];
     b = 0;
@@ -155,13 +158,9 @@ class _followPageState extends State<followPage> {
   getData(List follow) async {
     String bbb;
     for (var aa = 0; aa < RealTimeDatabase.tarih.length; aa++) {
-      if (RealTimeDatabase.tarih[b]['belediyeismi'] == "istanbul") {
-        bbb = "İstanbul Büyükşehir Belediyesi";
-      } else {
-        bbb = "Ankara Büyükşehir Belediyesi";
-      }
+
       for (var i = 0; i < follow.length; i++) {
-        if (follow[i] == bbb) {
+        if (follow[i] == RealTimeDatabase.tarih[b]['belediyeismi']) {
           DatabaseReference postref2 = FirebaseDatabase.instance
               .reference()
               .child('haberler')
@@ -197,13 +196,9 @@ class _followPageState extends State<followPage> {
     b = b + 1;
     var cccc = postList.length + 3;
     for (var aa = 0; aa < RealTimeDatabase.tarih.length; aa++) {
-      if (RealTimeDatabase.tarih[b]['belediyeismi'] == "istanbul") {
-        bbb = "İstanbul Büyükşehir Belediyesi";
-      } else {
-        bbb = "Ankara Büyükşehir Belediyesi";
-      }
+
       for (var i = 0; i < follow.length; i++) {
-        if (follow[i] == bbb) {
+        if (follow[i] == RealTimeDatabase.tarih[b]['belediyeismi']) {
           DatabaseReference postref2 = FirebaseDatabase.instance
               .reference()
               .child('haberler')
