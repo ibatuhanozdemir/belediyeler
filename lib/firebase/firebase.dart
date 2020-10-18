@@ -9,9 +9,9 @@ class DatabaseService {
   DatabaseService({this.uid});
 
   final CollectionReference userCollection =
-      FirebaseFirestore.instance.collection('Users');
+  FirebaseFirestore.instance.collection('Users');
   final CollectionReference userCollection1 =
-      FirebaseFirestore.instance.collection('belediyeler');
+  FirebaseFirestore.instance.collection('belediyeler');
   final CollectionReference userCollection2 =
   FirebaseFirestore.instance.collection('belediyelerinfo');
 
@@ -55,7 +55,7 @@ class DatabaseService {
 
   Stream<List<UserInfoObjesi>> get Users {
     return userCollection.snapshots().map(userfromsnapshot);
-}
+  }
 
   DocumentSnapshot usersfollow(DocumentSnapshot snapshot) {
     return snapshot;

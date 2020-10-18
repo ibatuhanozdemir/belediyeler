@@ -54,9 +54,9 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
             ),
             Center(
                 child: Text(
-              "Bilgi almak istediğiniz belediye:",
-              textAlign: TextAlign.center,
-            )),
+                  "Bilgi almak istediğiniz belediye:",
+                  textAlign: TextAlign.center,
+                )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +87,7 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
                     }).toList(),
                     onChanged: (value) async {
                       var result =
-                          await DatabaseService().BelediyeBilgileri(value);
+                      await DatabaseService().BelediyeBilgileri(value);
                       print(result);
                       setState(() {
                         BelediyeBilgileriList = result;
