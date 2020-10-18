@@ -105,7 +105,7 @@ class _followPageState extends State<followPage> {
     return GestureDetector(
       child: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.23,
+          height: MediaQuery.of(context).size.height * 0.24,
           child: Card(
             color: Colors.white,
             elevation: 100,
@@ -149,7 +149,7 @@ class _followPageState extends State<followPage> {
                             child: Text(
                               habericerik1,
                               overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
+                              maxLines: 2,
                               style: TextStyle(color: Colors.grey.shade700,fontStyle: FontStyle.italic),
                             ),
                             padding: EdgeInsets.fromLTRB(10, 0, 10, 10),

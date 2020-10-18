@@ -81,6 +81,7 @@ class _TumHaberlerState extends State<TumHaberler> {
                     postList[index].url,
                     postList[index].belediye,
                     postList[index].tarih,
+                    postList[index].habericerik1,
                     index,
                     follows);
               },
@@ -89,7 +90,7 @@ class _TumHaberlerState extends State<TumHaberler> {
           );
   }
 
-  Widget newsUI(String haberbaslik, String URL, String belediye, String tarih,
+  Widget newsUI(String haberbaslik, String URL, String belediye, String tarih, String habericerik1,
       int index, DocumentSnapshot follows) {
     var aaa = 0;
 
@@ -112,7 +113,7 @@ class _TumHaberlerState extends State<TumHaberler> {
     return GestureDetector(
       child: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.22,
+          height: MediaQuery.of(context).size.height * 0.24,
           child: Card(
             color: Colors.white,
             elevation: 100,
@@ -146,9 +147,22 @@ class _TumHaberlerState extends State<TumHaberler> {
                       width: MediaQuery.of(context).size.height * 0.01,
                     ),
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(haberbaslik),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                            child: Text(haberbaslik, style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          Container(
+                            child: Text(
+                              habericerik1,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(color: Colors.grey.shade700,fontStyle: FontStyle.italic),
+                            ),
+                            padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          ),
+                        ],
                       ),
                     ),
                     Column(

@@ -81,21 +81,21 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     offstage: _selectedIndex != 0,
                     child: TickerMode(
                       enabled: _selectedIndex == 0,
-                      child: MaterialApp(home: TumHaberler()),
+                      child: MaterialApp(home: TumHaberler(),debugShowCheckedModeBanner: false,),
                     ),
                   ),
                   Offstage(
                     offstage: _selectedIndex != 1,
                     child: TickerMode(
                       enabled: _selectedIndex == 1,
-                      child: MaterialApp(home: FollowPageChooser()),
+                      child: MaterialApp(home: FollowPageChooser(),debugShowCheckedModeBanner: false,),
                     ),
                   ),
                   Offstage(
                     offstage: _selectedIndex != 2,
                     child: TickerMode(
                       enabled: _selectedIndex == 2,
-                      child: MaterialApp(home: BelediyeBilgileri()),
+                      child: MaterialApp(home: BelediyeBilgileri(),debugShowCheckedModeBanner: false,),
                     ),
                   ),
                 ],
