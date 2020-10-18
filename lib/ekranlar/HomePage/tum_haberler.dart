@@ -112,9 +112,9 @@ class _TumHaberlerState extends State<TumHaberler> {
     return GestureDetector(
       child: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.28,
+          height: MediaQuery.of(context).size.height * 0.22,
           child: Card(
-            color: Colors.blueGrey.shade100,
+            color: Colors.white,
             elevation: 100,
             child: Column(
               children: <Widget>[
@@ -134,6 +134,7 @@ class _TumHaberlerState extends State<TumHaberler> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       height: MediaQuery.of(context).size.height * 0.16,
@@ -150,32 +151,33 @@ class _TumHaberlerState extends State<TumHaberler> {
                         child: Text(haberbaslik),
                       ),
                     ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.all(0),
-                      width: MediaQuery.of(context).size.height * 0.05,
-                      child: FlatButton(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
+                        Container(
                           padding: EdgeInsets.all(0),
-                          onPressed: () {
-                            setState(() {
-                              if (aaa == 0) {
-                                DatabaseService _databaseService =
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          child: FlatButton(
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                                setState(() {
+                                  if (aaa == 0) {
+                                    DatabaseService _databaseService =
                                     new DatabaseService(uid: user.uid);
-                                dynamic result =
+                                    dynamic result =
                                     _databaseService.updateUserFollow(belediye);
-                              } else {
-                                DatabaseService _databaseService =
+                                  } else {
+                                    DatabaseService _databaseService =
                                     new DatabaseService(uid: user.uid);
-                                dynamic result =
+                                    dynamic result =
                                     _databaseService.deleteUserFollow(belediye);
-                              }
-                            });
-                          },
-                          child: Icon(icon)),
+                                  }
+                                });
+                              },
+                              child: Icon(icon)),
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -208,6 +210,7 @@ class _TumHaberlerState extends State<TumHaberler> {
         DATA['url'],
         DATA['belediye'],
         DATA['tarih'],
+        DATA['habericerik1']
       );
 
       print("get data");

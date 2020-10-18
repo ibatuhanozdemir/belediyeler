@@ -87,8 +87,13 @@ class _followPageState extends State<followPage> {
             body: ListView.builder(
               controller: _scrollController,
               itemBuilder: (_, index) {
-                return newsUI(postList[index].haberbaslik, postList[index].url,
-                    postList[index].belediye, postList[index].tarih, index);
+                return newsUI(
+                    postList[index].haberbaslik,
+                    postList[index].url,
+                    postList[index].belediye,
+                    postList[index].tarih,
+                    postList[index].habericerik1,
+                    index);
               },
               itemCount: postList.length,
             ),
@@ -96,14 +101,14 @@ class _followPageState extends State<followPage> {
   }
 
   Widget newsUI(String haberbaslik, String URL, String belediye, String tarih,
-      int index) {
+      String habericerik1, int index) {
     return GestureDetector(
       child: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.28,
+          height: MediaQuery.of(context).size.height * 0.23,
           child: Card(
             color: Colors.white,
-            elevation: 10,
+            elevation: 100,
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -122,6 +127,7 @@ class _followPageState extends State<followPage> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       height: MediaQuery.of(context).size.height * 0.16,
@@ -133,9 +139,22 @@ class _followPageState extends State<followPage> {
                       width: MediaQuery.of(context).size.height * 0.01,
                     ),
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        child: Text(haberbaslik),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                            child: Text(haberbaslik, style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          Container(
+                            child: Text(
+                              habericerik1,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              style: TextStyle(color: Colors.grey.shade700,fontStyle: FontStyle.italic),
+                            ),
+                            padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -158,7 +177,6 @@ class _followPageState extends State<followPage> {
   getData(List follow) async {
     String bbb;
     for (var aa = 0; aa < RealTimeDatabase.tarih.length; aa++) {
-
       for (var i = 0; i < follow.length; i++) {
         if (follow[i] == RealTimeDatabase.tarih[b]['belediyeismi']) {
           DatabaseReference postref2 = FirebaseDatabase.instance
@@ -170,11 +188,11 @@ class _followPageState extends State<followPage> {
             var DATA = snap.value;
 
             HaberlerObjesi news1 = new HaberlerObjesi(
-              DATA['haberbaslik'],
-              DATA['url'],
-              DATA['belediye'],
-              DATA['tarih'],
-            );
+                DATA['haberbaslik'],
+                DATA['url'],
+                DATA['belediye'],
+                DATA['tarih'],
+                DATA['habericerik1']);
             print("get data");
             setState(() {
               postList.add(news1);
@@ -196,7 +214,6 @@ class _followPageState extends State<followPage> {
     b = b + 1;
     var cccc = postList.length + 3;
     for (var aa = 0; aa < RealTimeDatabase.tarih.length; aa++) {
-
       for (var i = 0; i < follow.length; i++) {
         if (follow[i] == RealTimeDatabase.tarih[b]['belediyeismi']) {
           DatabaseReference postref2 = FirebaseDatabase.instance
@@ -208,11 +225,11 @@ class _followPageState extends State<followPage> {
             var DATA = snap.value;
 
             HaberlerObjesi news1 = new HaberlerObjesi(
-              DATA['haberbaslik'],
-              DATA['url'],
-              DATA['belediye'],
-              DATA['tarih'],
-            );
+                DATA['haberbaslik'],
+                DATA['url'],
+                DATA['belediye'],
+                DATA['tarih'],
+                DATA['habericerik1']);
             print("get data");
             setState(() {
               postList.add(news1);
