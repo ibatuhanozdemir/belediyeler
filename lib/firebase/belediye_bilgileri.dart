@@ -1,16 +1,9 @@
 import 'package:belediyeler/KalipWidgetlar/belediye_ayrintilari_widgeti.dart';
-import 'package:belediyeler/ekranlar/HomePage/belediyelist.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/firebase.dart';
-import 'package:belediyeler/firebase/user_info_objesi.dart';
-import 'package:belediyeler/firebase/kullanici_objesi.dart';
-import 'package:belediyeler/shared/spinner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../chooser.dart';
-import 'authentication.dart';
 import 'belediyeler_objesi.dart';
 
 class BelediyeBilgileri extends StatefulWidget {
@@ -36,6 +29,7 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
     belediyeList = Provider.of<List<BelediyelerObjesi>>(context);
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       endDrawer: KalipDrawer(),
       appBar: AppBar(
@@ -110,8 +104,8 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                      height: MediaQuery.of(context).size.height * 0.20,
-                      width: MediaQuery.of(context).size.height * 0.20,
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.height * 0.3,
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Image.network(URL)),
                   SizedBox(
@@ -122,7 +116,7 @@ class _BelediyeBilgileriState extends State<BelediyeBilgileri> {
                       BelediyeBilgileriList[0]['Belediye Faks'],
                       BelediyeBilgileriList[0]['Belediye Mail'],
                       BelediyeBilgileriList[0]['Belediye Web'],
-                      BelediyeBilgileriList[0]['Nufus'])
+                      BelediyeBilgileriList[0]['Nufus']),
                 ],
               ),
             ),

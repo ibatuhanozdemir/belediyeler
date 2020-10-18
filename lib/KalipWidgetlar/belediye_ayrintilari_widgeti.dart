@@ -15,21 +15,45 @@ class BelediyeAyrintilariWidgeti extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return SingleChildScrollView(
+      child: Row(
         children: [
-          Text('Belediye Telefon : $Tel'),
-          Text('Belediye Faks : $Faks'),
-          Text('Belediye Mail : $Mail'),
-          Text('Belediye Web : $Web'),
-          Text('Belediye Nufus : $Nufus'),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Belediye Telefon : '),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text('Belediye Faks : '),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text('Belediye Mail : '),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text('Belediye Web : '),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text('Belediye Nufus : '),
+            ],
+          ),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.12),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Text(Tel),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text(Faks),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text(Mail),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text(Web),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
+              Text(Nufus),
+            ],
+          ),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.02),
         ],
       ),
-
-
-
     );
   }
 }
