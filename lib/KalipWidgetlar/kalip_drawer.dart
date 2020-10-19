@@ -1,3 +1,4 @@
+import 'package:belediyeler/ekranlar/HomePage/belediyelist.dart';
 import 'package:belediyeler/ekranlar/HomePage/profil_sayfasi.dart';
 import 'package:emojis/emojis.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class KalipDrawer extends StatelessWidget {
               _createDrawerItem(
                   icon: Icons.account_circle, onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilSayfasi()));
-              }, text: "Profil"),
+              }, text: "Kişisel Bilgiler"),
+              _createDrawerItem(text: "Neleri Takip Ediyorum?",onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>belediyeList()));
+              }, icon: Icons.assignment_rounded)
             ],
           ),
           SizedBox(
@@ -31,7 +35,7 @@ class KalipDrawer extends StatelessWidget {
                 onPressed: (){
                   FirebaseAuth.instance.signOut();
                 },
-                child: Text(" ${Emojis.door} Çıkış Yap"),
+                child: Text("${Emojis.door} Çıkış Yap"),
               )
             ],
           )

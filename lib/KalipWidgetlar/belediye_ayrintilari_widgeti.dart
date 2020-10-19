@@ -48,7 +48,7 @@ class BelediyeAyrintilariWidgeti extends StatelessWidget {
               Text(Faks),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
               GestureDetector(child: Text(Mail,style: TextStyle(color: Colors.blue),), onTap: (){
-                launch('mailto://$Mail');
+                launch('mailto:$Mail');
               },),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
               GestureDetector(child: Text(Web,style: TextStyle(color: Colors.blue),), onTap: (){
@@ -62,13 +62,5 @@ class BelediyeAyrintilariWidgeti extends StatelessWidget {
         ],
       ),
     );
-  }
-  _launchURL() async {
-
-    if (await canLaunch(Web)) {
-      await launch(Web);
-    } else {
-      throw 'Could not launch $Web';
-    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:belediyeler/firebase/kullanici_objesi.dart';
 import 'package:belediyeler/firebase/user_info_objesi.dart';
@@ -45,11 +46,12 @@ class _ProfilSayfasiState extends State<ProfilSayfasi> {
         ? spinner()
         : Scaffold(
             resizeToAvoidBottomInset: false,
+            endDrawer: KalipDrawer(),
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Color(0xFF15202B),
               title: Text(
-                "Profil",
+                "Kişisel Bilgiler",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -89,21 +91,6 @@ class _ProfilSayfasiState extends State<ProfilSayfasi> {
                         ),
                         SizedBox(
                           height: 10,
-                        ),
-                        RaisedButton(
-                          onPressed: () async {
-                            dynamic result = await _authService.signOut();
-                          },
-                          child: Text('Çıkış'),
-                        ),
-                        RaisedButton(
-                          elevation: 100,
-                          child: Text('Belediye Listesi'),
-                          onPressed: () {
-                            Navigator.of(context).push(new MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    belediyeList()));
-                          },
                         ),
                       ],
                     ),

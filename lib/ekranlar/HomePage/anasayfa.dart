@@ -20,6 +20,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
   RealTimeDatabase realTimeDatabase = new RealTimeDatabase();
   FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = true;
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void initState() {
     super.initState();
@@ -73,63 +74,67 @@ class _AnaSayfaState extends State<AnaSayfa> {
         : StreamProvider<List<UserInfoObjesi>>.value(
             value: DatabaseService().Users,
             catchError: (_, __) => null,
-            child: Scaffold(
-              resizeToAvoidBottomInset: false,
-              body: Stack(
-                children: <Widget>[
-                  Offstage(
-                    offstage: _selectedIndex != 0,
-                    child: TickerMode(
-                      enabled: _selectedIndex == 0,
-                      child: MaterialApp(home: TumHaberler(),debugShowCheckedModeBanner: false,),
+            child: GestureDetector(
+              onTap: (){
+              },
+              child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: Stack(
+                  children: <Widget>[
+                    Offstage(
+                      offstage: _selectedIndex != 0,
+                      child: TickerMode(
+                        enabled: _selectedIndex == 0,
+                        child: MaterialApp(home: TumHaberler(),debugShowCheckedModeBanner: false,),
+                      ),
                     ),
-                  ),
-                  Offstage(
-                    offstage: _selectedIndex != 1,
-                    child: TickerMode(
-                      enabled: _selectedIndex == 1,
-                      child: MaterialApp(home: FollowPageChooser(),debugShowCheckedModeBanner: false,),
+                    Offstage(
+                      offstage: _selectedIndex != 1,
+                      child: TickerMode(
+                        enabled: _selectedIndex == 1,
+                        child: MaterialApp(home: FollowPageChooser(),debugShowCheckedModeBanner: false,),
+                      ),
                     ),
-                  ),
-                  Offstage(
-                    offstage: _selectedIndex != 2,
-                    child: TickerMode(
-                      enabled: _selectedIndex == 2,
-                      child: MaterialApp(home: BelediyeBilgileri(),debugShowCheckedModeBanner: false,),
+                    Offstage(
+                      offstage: _selectedIndex != 2,
+                      child: TickerMode(
+                        enabled: _selectedIndex == 2,
+                        child: MaterialApp(home: BelediyeBilgileri(),debugShowCheckedModeBanner: false,),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              bottomNavigationBar: ConvexAppBar(
-                items: [
-                  TabItem(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.white,
+                  ],
+                ),
+                bottomNavigationBar: ConvexAppBar(
+                  items: [
+                    TabItem(
+                      icon: Icon(
+                        Icons.home,
+                        color: Colors.white,
+                      ),
+                      title: 'Ana Akış',
                     ),
-                    title: 'Ana Akış',
-                  ),
-                  TabItem(
-                    icon: Icon(
-                      Icons.subscriptions,
-                      color: Colors.white,
+                    TabItem(
+                      icon: Icon(
+                        Icons.subscriptions,
+                        color: Colors.white,
+                      ),
+                      title: 'Takip Ettiklerim',
                     ),
-                    title: 'Takip Ettiklerim',
-                  ),
-                  TabItem(
-                    icon: Icon(
-                      Icons.info,
-                      color: Colors.white,
+                    TabItem(
+                      icon: Icon(
+                        Icons.info,
+                        color: Colors.white,
+                      ),
+                      title: 'Belediye Bilgileri',
                     ),
-                    title: 'Belediye Bilgileri',
-                  ),
-                ],
-                initialActiveIndex: _selectedIndex,
-                onTap: _onItemTapped,
-                backgroundColor: Colors.red,
-                activeColor: Colors.red.shade600,
-                top: -5,
-                curveSize: 10,
+                  ],
+                  initialActiveIndex: _selectedIndex,
+                  onTap: _onItemTapped,
+                  backgroundColor: Colors.red,
+                  activeColor: Colors.red.shade600,
+                  top: -5,
+                  curveSize: 10,
+                ),
               ),
             ),
           );

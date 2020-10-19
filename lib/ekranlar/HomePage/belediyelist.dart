@@ -1,3 +1,4 @@
+import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:belediyeler/firebase/belediyeler_objesi.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/kullanici_objesi.dart';
@@ -20,6 +21,7 @@ class _belediyeListState extends State<belediyeList> {
     belediyeList = Provider.of<List<BelediyelerObjesi>>(context);
 
     return Scaffold(
+      endDrawer: KalipDrawer(),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xFF15202B),
@@ -55,7 +57,7 @@ Widget belediyeCard(List<BelediyelerObjesi> belediyeList, int index,
   }
   return GestureDetector(
     child: Card(
-      color: Colors.blueGrey.shade100,
+      color: Colors.white,
       elevation: 100,
       child: Row(
         children: <Widget>[

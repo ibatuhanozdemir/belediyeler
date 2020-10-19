@@ -11,15 +11,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class TumHaberler extends StatefulWidget {
   @override
-
   _TumHaberlerState createState() => _TumHaberlerState();
 }
 
 class _TumHaberlerState extends State<TumHaberler> {
-
   List<HaberlerObjesi> postList = [];
   List tarih = [];
   String post2;
@@ -90,8 +87,8 @@ class _TumHaberlerState extends State<TumHaberler> {
           );
   }
 
-  Widget newsUI(String haberbaslik, String URL, String belediye, String tarih, String habericerik1,
-      int index, DocumentSnapshot follows) {
+  Widget newsUI(String haberbaslik, String URL, String belediye, String tarih,
+      String habericerik1, int index, DocumentSnapshot follows) {
     var aaa = 0;
 
     final user = Provider.of<KullaniciObjesi>(context);
@@ -151,14 +148,20 @@ class _TumHaberlerState extends State<TumHaberler> {
                         children: [
                           Container(
                             padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            child: Text(haberbaslik, style: TextStyle(fontWeight: FontWeight.bold),),
+                            child: Text(
+                              haberbaslik,
+                              maxLines: 3,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Container(
                             child: Text(
                               habericerik1,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
-                              style: TextStyle(color: Colors.grey.shade700,fontStyle: FontStyle.italic),
+                              style: TextStyle(
+                                  color: Colors.grey.shade700,
+                                  fontStyle: FontStyle.italic),
                             ),
                             padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                           ),
@@ -168,7 +171,9 @@ class _TumHaberlerState extends State<TumHaberler> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.1,
+                        ),
                         Container(
                           padding: EdgeInsets.all(0),
                           width: MediaQuery.of(context).size.height * 0.05,
@@ -178,14 +183,14 @@ class _TumHaberlerState extends State<TumHaberler> {
                                 setState(() {
                                   if (aaa == 0) {
                                     DatabaseService _databaseService =
-                                    new DatabaseService(uid: user.uid);
-                                    dynamic result =
-                                    _databaseService.updateUserFollow(belediye);
+                                        new DatabaseService(uid: user.uid);
+                                    dynamic result = _databaseService
+                                        .updateUserFollow(belediye);
                                   } else {
                                     DatabaseService _databaseService =
-                                    new DatabaseService(uid: user.uid);
-                                    dynamic result =
-                                    _databaseService.deleteUserFollow(belediye);
+                                        new DatabaseService(uid: user.uid);
+                                    dynamic result = _databaseService
+                                        .deleteUserFollow(belediye);
                                   }
                                 });
                               },
@@ -219,13 +224,8 @@ class _TumHaberlerState extends State<TumHaberler> {
     await postref2.once().then((DataSnapshot snap) {
       var DATA = snap.value;
 
-      HaberlerObjesi news1 = new HaberlerObjesi(
-        DATA['haberbaslik'],
-        DATA['url'],
-        DATA['belediye'],
-        DATA['tarih'],
-        DATA['habericerik1']
-      );
+      HaberlerObjesi news1 = new HaberlerObjesi(DATA['haberbaslik'],
+          DATA['url'], DATA['belediye'], DATA['tarih'], DATA['habericerik1']);
 
       print("get data");
       setState(() {
