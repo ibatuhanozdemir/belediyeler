@@ -3,19 +3,19 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewsDetail1 extends StatefulWidget {
+class NewsDetail2 extends StatefulWidget {
   @override
   int index;
+  String belediye;
+  NewsDetail2(this.index,this.belediye);
 
-  NewsDetail1(this.index);
-
-  _NewsDetail1State createState() => _NewsDetail1State(index);
+  _NewsDetail1State createState() => _NewsDetail1State(index,belediye);
 }
 
-class _NewsDetail1State extends State<NewsDetail1> {
+class _NewsDetail1State extends State<NewsDetail2> {
   int index;
-
-  _NewsDetail1State(this.index);
+  String belediye;
+  _NewsDetail1State(this.index,this.belediye);
 
   String haber1;
   List<Widget> Liste = [];
@@ -58,14 +58,17 @@ class _NewsDetail1State extends State<NewsDetail1> {
   }
 
   getData(int b) async {
+    RealTimeDatabase.tarih.forEach((element) {
+      if(belediye==element['belediyeismi']){
+        followhaber.add(element);
+      }
 
-
-
+    });
     DatabaseReference postref2 = FirebaseDatabase.instance
         .reference()
         .child('haberler')
-        .child(RealTimeDatabase.tarih[b]['belediyeismi'])
-        .child(RealTimeDatabase.tarih[b]['name']);
+        .child(followhaber[b]['belediyeismi'])
+        .child(followhaber[b]['name']);
     await postref2.once().then((DataSnapshot snap) {
       var DATA = snap.value;
       var iceriksayisi = DATA['iceriksayisi'];

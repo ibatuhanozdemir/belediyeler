@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'NewsDetail.dart';
+import 'NewsDetail2.dart';
+import 'news2.dart';
 
 class followPage extends StatefulWidget {
   BuildContext context;
@@ -169,7 +171,7 @@ class _followPageState extends State<followPage> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    NewsDetail(URL, haberbaslik, belediye, tarih, index)));
+                    NewsDetail3(URL, haberbaslik, belediye, tarih, index)));
       },
     );
   }

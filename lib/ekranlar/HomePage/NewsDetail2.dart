@@ -3,8 +3,10 @@ import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'news2.dart';
 
-class NewsDetail extends StatelessWidget {
+
+class NewsDetail3 extends StatelessWidget {
 
   String URL;
   String haberbaslik;
@@ -13,7 +15,7 @@ class NewsDetail extends StatelessWidget {
 
   int index;
 
-  NewsDetail(this.URL, this.haberbaslik, this.belediye, this.tarih, this.index);
+  NewsDetail3(this.URL, this.haberbaslik, this.belediye, this.tarih, this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class NewsDetail extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          NewsDetail1(index),
+          NewsDetail2(index,belediye),
         ],
       ),
     );

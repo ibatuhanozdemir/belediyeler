@@ -80,6 +80,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
               child: Scaffold(
                 resizeToAvoidBottomInset: false,
                 body: Stack(
+
                   children: <Widget>[
                     Offstage(
                       offstage: _selectedIndex != 0,
