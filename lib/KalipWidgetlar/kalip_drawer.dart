@@ -19,7 +19,7 @@ class KalipDrawer extends StatelessWidget {
               }, text: "Kişisel Bilgiler"),
               _createDrawerItem(text: "Neleri Takip Ediyorum?",onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>belediyeList()));
-              }, icon: Icons.assignment_rounded)
+              }, icon: Icons.assignment)
             ],
           ),
           SizedBox(
