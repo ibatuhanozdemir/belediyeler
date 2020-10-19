@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BelediyeAyrintilariWidgeti extends StatelessWidget {
 
@@ -40,13 +41,19 @@ class BelediyeAyrintilariWidgeti extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              Text(Tel),
+              GestureDetector(child: Text(Tel, style: TextStyle(color: Colors.blue),),onTap: (){
+                launch("tel://$Tel");
+              },),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
               Text(Faks),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
-              Text(Mail),
+              GestureDetector(child: Text(Mail,style: TextStyle(color: Colors.blue),), onTap: (){
+                launch('mailto://$Mail');
+              },),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
-              Text(Web),
+              GestureDetector(child: Text(Web,style: TextStyle(color: Colors.blue),), onTap: (){
+                launch('https://$Web');
+              },),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
               Text(Nufus),
             ],
@@ -55,5 +62,13 @@ class BelediyeAyrintilariWidgeti extends StatelessWidget {
         ],
       ),
     );
+  }
+  _launchURL() async {
+
+    if (await canLaunch(Web)) {
+      await launch(Web);
+    } else {
+      throw 'Could not launch $Web';
+    }
   }
 }
