@@ -64,7 +64,7 @@ class NewsDetail3 extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          NewsDetail2(index,belediye),
+          NewsDetail2(index,belediye,context),
         ],
       ),
     );

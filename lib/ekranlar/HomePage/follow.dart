@@ -47,12 +47,12 @@ class _followPageState extends State<followPage> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     var follows = Provider.of<DocumentSnapshot>(context);
-
+    follow = follows.get('follow');
     postList = [];
     tarih = [];
     b = 0;
 
-    follow = follows.get('follow');
+
     getData(follow);
   }
 
