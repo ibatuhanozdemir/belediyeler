@@ -24,7 +24,7 @@ class _LoginRegisterState extends State<LoginRegister> {
           isRepeatingAnimation: false,
           text: ["Belediye Haberleri"],
           speed: Duration(milliseconds: 200),
-          textStyle: TextStyle(
+          textStyle: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05
           ),
         ),
       ),
@@ -47,7 +47,7 @@ class _LoginRegisterState extends State<LoginRegister> {
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(24))),
-                  color: Colors.red,
+                  color: Colors.blue,
                   textColor: Colors.white,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,7 +76,7 @@ class _LoginRegisterState extends State<LoginRegister> {
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(24))),
-                  color: Colors.blue,
+                  color: Colors.red,
                   textColor: Colors.white,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

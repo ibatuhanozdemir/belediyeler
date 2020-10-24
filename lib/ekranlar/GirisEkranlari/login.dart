@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:belediyeler/ekranlar//GirisEkranlari/register.dart';
 import 'package:belediyeler/chooser.dart';
+import 'package:belediyeler/ekranlar/GirisEkranlari/reset_password.dart';
 import 'package:belediyeler/firebase/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       SizedBox(
-                        height: 200,
+                        height: MediaQuery.of(context).size.width*0.3,
                       ),
                       RaisedButton(
                         shape: RoundedRectangleBorder(
@@ -87,6 +88,7 @@ class _LoginState extends State<Login> {
                             scKey.currentState.showSnackBar(snackBar);
                             print('error');
                           } else {
+
                             print('sig in');
                             setState(() => loading = false);
                             Navigator.pushReplacement(
@@ -103,6 +105,40 @@ class _LoginState extends State<Login> {
                               width: 10,
                             ),
                             Text('Giriş'),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Şifrenizi mi unuttunuz?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Color(0xFF15202B)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(24))),
+                        color: Colors.amber.shade400,
+                        textColor: Colors.white,
+                        onPressed: () async {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResetPassword()));
+                          },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("${Emojis.key}"),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('Şifremi Sıfırla'),
                           ],
                         ),
                       ),

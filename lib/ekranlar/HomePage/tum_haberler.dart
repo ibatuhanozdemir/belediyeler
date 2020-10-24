@@ -1,5 +1,6 @@
 import 'package:belediyeler/ekranlar/HomePage/NewsDetail.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
+import 'package:belediyeler/firebase/advert_service.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/haberler_objesi.dart';
 import 'package:belediyeler/firebase/realtimefirebase.dart';
@@ -25,7 +26,7 @@ class _TumHaberlerState extends State<TumHaberler> {
   int i = 1;
   int c = 5;
   IconData icon = Icons.favorite_border;
-
+  AdvertService _advertService=AdvertService();
   bool loading = true;
   bool loading1 = false;
   ScrollController _scrollController = new ScrollController();
@@ -33,6 +34,7 @@ class _TumHaberlerState extends State<TumHaberler> {
   @override
   void initState() {
     //int i = 1;
+    _advertService.showIntersitial();
     postList = [];
     tarih = [];
     super.initState();
