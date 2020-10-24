@@ -17,15 +17,31 @@ class _FollowPageChooserState extends State<FollowPageChooser> {
     List aaa = follows.get("follow");
     if (aaa.length == 0) {
       return Scaffold(
+        endDrawer: KalipDrawer(),
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Color(0xFF15202B),
+          title: Text("Takip Ettiklerim"),
+        ),
         backgroundColor: Colors.white,
         body: Center(
-          child: RaisedButton(
-            elevation: 100,
-            child: Text('Belediye Listesi'),
-            onPressed: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => belediyeList()));
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Takip etmek için belediye seçiniz'),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.03,
+              ),
+              RaisedButton(
+                elevation: 100,
+                color: Colors.red,
+                child: Text('Belediye Listesi',style: TextStyle(color: Colors.white),),
+                onPressed: () {
+                  Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => belediyeList()));
+                },
+              ),
+            ],
           ),
         ),
       );

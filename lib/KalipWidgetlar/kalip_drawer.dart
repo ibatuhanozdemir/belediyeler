@@ -13,17 +13,13 @@ class KalipDrawer extends StatelessWidget {
           Column(
             children: [
               _createHeader(),
-              _createDrawerItem(
-                  icon: Icons.account_circle, onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilSayfasi()));
-              }, text: "Kişisel Bilgiler"),
               _createDrawerItem(text: "Neleri Takip Ediyorum?",onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>belediyeList()));
               }, icon: Icons.assignment)
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.48,
+            height: MediaQuery.of(context).size.height * 0.45,
           ),
           Column(
             children: [
