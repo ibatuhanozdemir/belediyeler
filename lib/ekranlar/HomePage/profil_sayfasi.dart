@@ -5,6 +5,7 @@ import 'package:belediyeler/firebase/user_info_objesi.dart';
 import 'package:belediyeler/shared/spinner.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'belediyelist.dart';
 
@@ -19,19 +20,22 @@ class _ProfilSayfasiState extends State<ProfilSayfasi> {
   String bbb;
   String ccc;
   static AuthService _authService = AuthService();
-
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     final usersdata = Provider.of<List<UserInfoObjesi>>(context);
     final user = Provider.of<KullaniciObjesi>(context);
 
     bool loading = false;
+    bool editing = false;
     String Name;
     String Surname;
     String Age;
+    String Mail;
     if (usersdata == null) {
       loading = true;
     } else {
+      Mail = auth.currentUser.email;
       loading = false;
       usersdata.forEach((userdata) {
         if (userdata.uid == user.uid) {
@@ -41,32 +45,35 @@ class _ProfilSayfasiState extends State<ProfilSayfasi> {
         }
       });
     }
-
     return loading
         ? spinner()
-        : Scaffold(
-            resizeToAvoidBottomInset: false,
-            endDrawer: KalipDrawer(),
-            appBar: AppBar(
-              centerTitle: true,
-              backgroundColor: Color(0xFF15202B),
-              title: Text(
-                "Kişisel Bilgiler",
-                style: TextStyle(color: Colors.white),
+        : GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
+            child: Scaffold(
+              resizeToAvoidBottomPadding: false,
+              resizeToAvoidBottomInset: false,
+              endDrawer: KalipDrawer(),
+              appBar: AppBar(
+                centerTitle: true,
+                backgroundColor: Color(0xFF15202B),
+                title: Text(
+                  "Kişisel Bilgiler",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            body: Center(
-              child: Container(
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: _formkey,
+              body: Center(
+                child: Container(
+                  child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        Text(Mail),
                         TextFormField(
                           decoration: InputDecoration(
                               hintText: Name,
-                              hintStyle: TextStyle(color: Colors.black)),
+                              hintStyle: TextStyle(color: Colors.blueGrey)),
                           validator: (val) =>
                               val.isEmpty ? 'İsim giriniz' : null,
                           onChanged: (input) => setState(() => aaa = input),

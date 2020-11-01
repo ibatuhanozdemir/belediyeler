@@ -105,36 +105,36 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     ),
                   ],
                 ),
-                bottomNavigationBar: BottomNavigationBar(
+                bottomNavigationBar: ConvexAppBar(
                   items: [
-                    BottomNavigationBarItem(
+                    TabItem(
                       icon: Icon(
                         Icons.home,
                         color: Colors.white,
                       ),
-                      title: Text('Ana Akış',style:TextStyle(color:Colors.white)),
+                      title: 'Ana Akış',
                     ),
-                    BottomNavigationBarItem(
+                    TabItem(
                       icon: Icon(
                         Icons.subscriptions,
                         color: Colors.white,
                       ),
-                      title: Text('Takip Ettiklerim',style:TextStyle(color:Colors.white)),
+                      title: 'Takip Ettiklerim',
                     ),
-                    BottomNavigationBarItem(
+                    TabItem(
                       icon: Icon(
                         Icons.info,
                         color: Colors.white,
                       ),
-                      title: Text('Belediye Bilgileri',style:TextStyle(color:Colors.white)),
+                      title: 'Belediye Bilgileri',
                     ),
                   ],
-                  currentIndex: _selectedIndex,
+                  initialActiveIndex: _selectedIndex,
                   onTap: _onItemTapped,
                   backgroundColor: Colors.red,
-                  selectedLabelStyle: TextStyle(color:Colors.white),
-
-
+                  activeColor: Colors.red.shade600,
+                  top: -5,
+                  curveSize: 10,
                 ),
               ),
             ),
