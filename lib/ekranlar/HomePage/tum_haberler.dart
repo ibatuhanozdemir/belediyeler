@@ -112,7 +112,7 @@ class _TumHaberlerState extends State<TumHaberler> {
     return GestureDetector(
       child: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.24,
+          height: MediaQuery.of(context).size.height * 0.21,
           child: Card(
             color: Colors.white,
             elevation: 100,
