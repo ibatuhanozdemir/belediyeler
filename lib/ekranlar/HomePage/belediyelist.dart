@@ -1,4 +1,5 @@
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
+import 'package:belediyeler/firebase/advert_service.dart';
 import 'package:belediyeler/firebase/belediyeler_objesi.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:belediyeler/firebase/kullanici_objesi.dart';
@@ -16,9 +17,11 @@ class _belediyeListState extends State<belediyeList> {
   List<BelediyelerObjesi> belediyeList;
 
   Widget build(BuildContext context) {
+
     var follows = Provider.of<DocumentSnapshot>(context);
     final user = Provider.of<KullaniciObjesi>(context);
     belediyeList = Provider.of<List<BelediyelerObjesi>>(context);
+
 
     return Scaffold(
       endDrawer: KalipDrawer(),

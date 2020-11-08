@@ -1,6 +1,6 @@
 import 'package:belediyeler/ekranlar/HomePage/anasayfa.dart';
 import 'package:belediyeler/ekranlar/GirisEkranlari/loginregister.dart';
-import 'package:belediyeler/firebase/advert_service.dart';
+
 import 'package:belediyeler/firebase/belediyeler_objesi.dart';
 import 'package:belediyeler/firebase/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

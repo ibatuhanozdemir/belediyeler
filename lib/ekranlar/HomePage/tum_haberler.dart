@@ -26,7 +26,7 @@ class _TumHaberlerState extends State<TumHaberler> {
   int i = 1;
   int c = 5;
   IconData icon = Icons.favorite_border;
-  AdvertService _advertService=AdvertService();
+
   bool loading = true;
   bool loading1 = false;
   ScrollController _scrollController = new ScrollController();
@@ -34,7 +34,7 @@ class _TumHaberlerState extends State<TumHaberler> {
   @override
   void initState() {
     //int i = 1;
-    _advertService.showIntersitial();
+
     postList = [];
     tarih = [];
     super.initState();
@@ -43,6 +43,7 @@ class _TumHaberlerState extends State<TumHaberler> {
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
+
         for (var a = 0; a < 3; a++) {
           getData(c);
           c = c + 1;

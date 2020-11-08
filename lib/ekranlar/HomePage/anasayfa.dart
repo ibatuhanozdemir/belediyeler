@@ -1,3 +1,5 @@
+
+import 'dart:io';
 import 'package:belediyeler/ekranlar/HomePage/follow_page_chooser.dart';
 import 'package:belediyeler/ekranlar/HomePage/tum_haberler.dart';
 import 'package:belediyeler/KalipWidgetlar/kalip_drawer.dart';
@@ -10,7 +12,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:belediyeler/firebase/advert_service.dart';
 class AnaSayfa extends StatefulWidget {
   @override
   _AnaSayfaState createState() => _AnaSayfaState();
@@ -21,9 +23,14 @@ class _AnaSayfaState extends State<AnaSayfa> {
   FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = true;
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  AdvertService _advertService=AdvertService();
   void initState() {
     super.initState();
+
+    if(Platform.isAndroid) {
+      _advertService.showIntersitialandroid();
+    }else
+      {_advertService.showIntersitialIos();}
     asyinit().whenComplete(() {
       setState(() {
         loading = false;
